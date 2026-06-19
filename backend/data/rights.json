@@ -1,0 +1,56 @@
+[
+  {
+    "right_id": "plyler",
+    "law": "Plyler v. Doe (1982)",
+    "title": "Right to Attend Public School",
+    "plain_language": "Every child in the United States has the right to attend public school regardless of immigration status. Schools cannot ask for immigration documents, a Social Security number, or visa status as a condition of enrollment.",
+    "what_schools_cannot_do": "Schools cannot deny enrollment, require a Social Security number, ask about citizenship or immigration status, or charge fees for enrollment.",
+    "action": "If a school asks for immigration documents or denies your child enrollment, contact your district ELL office immediately and reference Plyler v. Doe (1982).",
+    "source_url": "https://www.aclu.org/know-your-rights/the-rights-of-immigrants-in-the-us"
+  },
+  {
+    "right_id": "lau",
+    "law": "Lau v. Nichols (1974)",
+    "title": "Right to Language Support",
+    "plain_language": "Students who are not fluent in English have the right to language instruction. Schools must provide ESL classes, bilingual programs, or other language support. Students cannot be placed in classes where they cannot understand the instruction.",
+    "what_schools_cannot_do": "Schools cannot place a student in a regular English classroom with no language support and call that sufficient. They must have an active plan for English language development.",
+    "action": "Request an ELL assessment within the first 30 days of enrollment. Ask the school what specific language support program your child will be placed in.",
+    "source_url": "https://www.ed.gov/laws-and-policy/civil-rights-laws/english-learner-el-resources-and-guidance"
+  },
+  {
+    "right_id": "native-language-assessment",
+    "law": "IDEA (Individuals with Disabilities Education Act) / Title III",
+    "title": "Right to Be Assessed in Your Native Language",
+    "plain_language": "Your child's academic ability must be evaluated separately from their English proficiency. Math, science, and other subject knowledge must be tested in the child's home language — not just in English. A child should never be placed below their academic level simply because of a language barrier.",
+    "what_schools_cannot_do": "Schools cannot use an English-only test to determine a child's academic grade placement if the child is not yet fluent in English.",
+    "action": "Request in writing that all placement assessments be administered in your child's home language. If your child was placed below their level, you have the right to request a re-assessment.",
+    "source_url": "https://sites.ed.gov/idea/"
+  },
+  {
+    "right_id": "title6",
+    "law": "Title VI of the Civil Rights Act (1964)",
+    "title": "Right to Information in Your Language",
+    "plain_language": "Schools must provide important communications to parents in a language they can understand. This includes report cards, meeting notices, disciplinary letters, IEP documents, and enrollment forms. You have the right to request an interpreter for any school meeting.",
+    "what_schools_cannot_do": "Schools cannot send only English-language documents to parents who do not speak English, or refuse to provide an interpreter at parent-teacher conferences and IEP meetings.",
+    "action": "Request all school communications in your language in writing. Ask for an interpreter for any meeting. Schools are legally required to provide this at no cost to you.",
+    "source_url": "https://www.ed.gov/laws-and-policy/civil-rights-laws/english-learner-el-resources-and-guidance"
+  },
+  {
+    "right_id": "mckinney-vento",
+    "law": "McKinney-Vento Homeless Assistance Act",
+    "title": "Right to Immediate Enrollment Without Documents",
+    "plain_language": "Children experiencing housing instability — including those staying in shelters, motels, or temporarily with other families — have the right to enroll in school immediately, even without the documents schools normally require like proof of address, immunization records, or prior school records.",
+    "what_schools_cannot_do": "Schools cannot delay or deny enrollment while waiting for documents from a child experiencing housing instability.",
+    "action": "If you do not have a permanent address or required documents, tell the school enrollment office and ask about McKinney-Vento protections. The school must connect you with a homeless liaison.",
+    "source_url": "https://nche.ed.gov/mckinney-vento/"
+  },
+  {
+    "right_id": "idea-iep",
+    "law": "IDEA (Individuals with Disabilities Education Act)",
+    "title": "Right to Special Education Assessment",
+    "plain_language": "If your child may have a learning disability or developmental need, they have the right to a free evaluation. Language barriers must not be confused with learning disabilities. Any evaluation must be conducted in the child's native language.",
+    "what_schools_cannot_do": "Schools cannot label a child as having a learning disability based on English language tests alone. They cannot charge for evaluations or deny a parent's written request for an evaluation.",
+    "action": "Submit a written request to your school asking for a special education evaluation. The school must respond within 60 days. Request that all testing be done in your child's home language.",
+    "source_url": "https://sites.ed.gov/idea/"
+  }
+]

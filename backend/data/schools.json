@@ -1,0 +1,122 @@
+[
+  {
+    "district_id": "houston-isd",
+    "district_name": "Houston Independent School District",
+    "state": "TX",
+    "title1_status": true,
+    "ell_program": "Bilingual/ESL program available at all schools",
+    "ell_contact_url": "https://www.houstonisd.org/multilingual",
+    "ell_phone": "713-556-6960",
+    "top_languages": ["Spanish", "Vietnamese", "Arabic"],
+    "tutoring_programs": ["Title I tutoring", "Houston Public Library programs"],
+    "parent_rights_url": "https://www.houstonisd.org/parentrights"
+  },
+  {
+    "district_id": "nyc-doe",
+    "district_name": "New York City Department of Education",
+    "state": "NY",
+    "title1_status": true,
+    "ell_program": "Multilingual Learners program, bilingual and ESL options",
+    "ell_contact_url": "https://www.schools.nyc.gov/learning/language",
+    "ell_phone": "718-935-2009",
+    "top_languages": ["Spanish", "Chinese", "Arabic", "Bengali"],
+    "tutoring_programs": ["Title I tutoring", "NYC Public Library tutoring", "After-school programs"],
+    "parent_rights_url": "https://www.schools.nyc.gov/school-life/policies-for-all/parents-bill-of-rights"
+  },
+  {
+    "district_id": "lausd",
+    "district_name": "Los Angeles Unified School District",
+    "state": "CA",
+    "title1_status": true,
+    "ell_program": "English Learner programs including dual language and SEI",
+    "ell_contact_url": "https://www.lausd.net/multilingual",
+    "ell_phone": "213-241-5337",
+    "top_languages": ["Spanish", "Korean", "Armenian", "Tagalog"],
+    "tutoring_programs": ["Title I tutoring", "LA Public Library programs", "EL Achieve"],
+    "parent_rights_url": "https://www.lausd.net/parentrights"
+  },
+  {
+    "district_id": "chicago-ps",
+    "district_name": "Chicago Public Schools",
+    "state": "IL",
+    "title1_status": true,
+    "ell_program": "Transitional Bilingual Education and ESL programs",
+    "ell_contact_url": "https://www.cps.edu/services-and-supports/multilingual-education/",
+    "ell_phone": "773-553-1940",
+    "top_languages": ["Spanish", "Polish", "Arabic", "Chinese"],
+    "tutoring_programs": ["Title I tutoring", "Chicago Public Library programs"],
+    "parent_rights_url": "https://www.cps.edu/parentrights"
+  },
+  {
+    "district_id": "miami-dade",
+    "district_name": "Miami-Dade County Public Schools",
+    "state": "FL",
+    "title1_status": true,
+    "ell_program": "ESOL program with bilingual support",
+    "ell_contact_url": "https://www.dadeschools.net/esol",
+    "ell_phone": "305-995-1580",
+    "top_languages": ["Spanish", "Haitian Creole", "Portuguese"],
+    "tutoring_programs": ["Title I tutoring", "Miami Public Library programs"],
+    "parent_rights_url": "https://www.dadeschools.net/parentrights"
+  },
+  {
+    "district_id": "dallas-isd",
+    "district_name": "Dallas Independent School District",
+    "state": "TX",
+    "title1_status": true,
+    "ell_program": "Bilingual and ESL programs districtwide",
+    "ell_contact_url": "https://www.dallasisd.org/bilingual",
+    "ell_phone": "972-925-4200",
+    "top_languages": ["Spanish", "Arabic", "Vietnamese"],
+    "tutoring_programs": ["Title I tutoring", "Dallas Public Library programs"],
+    "parent_rights_url": "https://www.dallasisd.org/parentrights"
+  },
+  {
+    "district_id": "clark-county-nv",
+    "district_name": "Clark County School District",
+    "state": "NV",
+    "title1_status": true,
+    "ell_program": "English Language Learner services at all schools",
+    "ell_contact_url": "https://www.ccsd.net/departments/ell/",
+    "ell_phone": "702-799-8658",
+    "top_languages": ["Spanish", "Tagalog", "Chinese"],
+    "tutoring_programs": ["Title I tutoring", "Las Vegas Clark County Library programs"],
+    "parent_rights_url": "https://www.ccsd.net/parentrights"
+  },
+  {
+    "district_id": "broward-county-fl",
+    "district_name": "Broward County Public Schools",
+    "state": "FL",
+    "title1_status": true,
+    "ell_program": "ESOL services and bilingual support",
+    "ell_contact_url": "https://www.browardschools.com/esol",
+    "ell_phone": "754-321-2400",
+    "top_languages": ["Spanish", "Haitian Creole", "Portuguese"],
+    "tutoring_programs": ["Title I tutoring", "Broward County Library programs"],
+    "parent_rights_url": "https://www.browardschools.com/parentrights"
+  },
+  {
+    "district_id": "gwinnett-county-ga",
+    "district_name": "Gwinnett County Public Schools",
+    "state": "GA",
+    "title1_status": true,
+    "ell_program": "English to Speakers of Other Languages (ESOL) program",
+    "ell_contact_url": "https://www.gcpsk12.org/esol",
+    "ell_phone": "678-301-6000",
+    "top_languages": ["Spanish", "Korean", "Hindi", "Vietnamese"],
+    "tutoring_programs": ["Title I tutoring", "Gwinnett Public Library programs"],
+    "parent_rights_url": "https://www.gcpsk12.org/parentrights"
+  },
+  {
+    "district_id": "prince-georges-md",
+    "district_name": "Prince George's County Public Schools",
+    "state": "MD",
+    "title1_status": true,
+    "ell_program": "ESOL and bilingual programs",
+    "ell_contact_url": "https://www.pgcps.org/esol",
+    "ell_phone": "301-952-6000",
+    "top_languages": ["Spanish", "French", "Amharic"],
+    "tutoring_programs": ["Title I tutoring", "Prince George's County Library programs"],
+    "parent_rights_url": "https://www.pgcps.org/parentrights"
+  }
+]

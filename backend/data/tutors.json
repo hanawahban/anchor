@@ -1,0 +1,82 @@
+[
+  {
+    "platform": "Khan Academy",
+    "url": "https://www.khanacademy.org",
+    "subjects": ["math", "science", "english", "history", "SAT prep"],
+    "languages": ["Spanish", "Arabic", "French", "Portuguese", "Hindi", "Bengali", "Swahili"],
+    "free": true,
+    "format": "self-paced online video + practice",
+    "grades": "K-12",
+    "best_for": "All grades, all subjects, strongest multilingual library of any free platform"
+  },
+  {
+    "platform": "Schoolhouse.world",
+    "url": "https://schoolhouse.world",
+    "subjects": ["math", "SAT prep"],
+    "languages": ["English"],
+    "free": true,
+    "format": "live 1-on-1 peer tutoring sessions",
+    "grades": "6-12",
+    "best_for": "Students who need live math help or SAT preparation"
+  },
+  {
+    "platform": "UPchieve",
+    "url": "https://upchieve.org",
+    "subjects": ["math", "science", "essay writing", "college counseling"],
+    "languages": ["English", "Spanish"],
+    "free": true,
+    "format": "on-demand live tutoring, available 24/7",
+    "grades": "6-12",
+    "best_for": "Urgent homework help, available any time of day or night"
+  },
+  {
+    "platform": "Learn To Be",
+    "url": "https://www.learntobe.org",
+    "subjects": ["math", "reading", "science", "writing"],
+    "languages": ["English", "Spanish"],
+    "free": true,
+    "format": "recurring weekly 1-on-1 sessions with volunteer tutors",
+    "grades": "K-12",
+    "best_for": "Students who need consistent long-term support from the same tutor"
+  },
+  {
+    "platform": "Varsity Tutors (free sessions)",
+    "url": "https://www.varsitytutors.com/free-tutoring",
+    "subjects": ["math", "science", "english", "SAT prep"],
+    "languages": ["English"],
+    "free": true,
+    "format": "free live classes and group sessions",
+    "grades": "K-12",
+    "best_for": "Students who want structured live group classes at no cost"
+  },
+  {
+    "platform": "Duolingo",
+    "url": "https://www.duolingo.com",
+    "subjects": ["english language learning"],
+    "languages": ["Spanish", "Arabic", "French", "Portuguese", "Chinese", "Hindi", "Vietnamese", "Korean"],
+    "free": true,
+    "format": "self-paced mobile app",
+    "grades": "All ages",
+    "best_for": "Students building English fluency before academic tutoring"
+  },
+  {
+    "platform": "Newsela",
+    "url": "https://newsela.com",
+    "subjects": ["reading", "english", "social studies", "science"],
+    "languages": ["Spanish", "English"],
+    "free": true,
+    "format": "self-paced reading platform with leveled articles",
+    "grades": "3-12",
+    "best_for": "Building academic English reading skills at the right level"
+  },
+  {
+    "platform": "CK-12",
+    "url": "https://www.ck12.org",
+    "subjects": ["math", "science"],
+    "languages": ["English"],
+    "free": true,
+    "format": "self-paced online textbooks and practice",
+    "grades": "6-12",
+    "best_for": "STEM subjects, especially for students who were ahead in math/science in their home country"
+  }
+]

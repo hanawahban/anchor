@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "dev": "concurrently --names BACKEND,FRONTEND --prefix-colors cyan,magenta \"cd backend && python -m uvicorn app:app --reload --port 8000\" \"cd frontend && npm run dev\"",
+    "setup": "npm run setup:backend && npm run setup:frontend",
+    "setup:backend": "cd backend && pip install -r requirements.txt",
+    "setup:frontend": "cd frontend && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  }
+}

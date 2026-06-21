@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+import AnchorChat from './AnchorChat.jsx'
 import DistrictCard from './DistrictCard.jsx'
 import CurriculumGapCard from './CurriculumGapCard.jsx'
 import RightsCards from './RightsCards.jsx'
@@ -43,25 +45,23 @@ function EmptyState({ t }) {
   )
 }
 
-export default function ResultsPanel({ structured, intakeData, language, t, analysisError, onRetry }) {
+export default function ResultsPanel({ structured, intakeData, language, t, analysisError, onRetry, resourceMatches }) {
+  const [toastVisible, setToastVisible] = useState(false)
+  const [chatCollapsed, setChatCollapsed] = useState(false)
+
+  useEffect(() => {
+    function handleAppend() {
+      setToastVisible(true)
+      setTimeout(() => setToastVisible(false), 3000)
+    }
+    window.addEventListener('anchor:appendToScript', handleAppend)
+    return () => window.removeEventListener('anchor:appendToScript', handleAppend)
+  }, [])
+
   const programRights = structured ? (structured.rights || []).filter(r => PROGRAM_RIGHT_IDS.has(r.id)) : []
   const universalRights = structured ? (structured.rights || []).filter(r => !PROGRAM_RIGHT_IDS.has(r.id)) : []
 
-  const districtName = structured?.district?.name || ''
-  const programCount = programRights.length + universalRights.length
   const selectedSubjects = intakeData?.concerns || []
-
-  function buildSummaryText() {
-    let text = `Based on what you shared, your child has important rights and may qualify for ${programCount} support program${programCount !== 1 ? 's' : ''}`
-    if (districtName) text += ` in ${districtName}`
-    text += '.'
-    if (selectedSubjects.length > 0) {
-      const subjList = selectedSubjects.map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(', ')
-      text += ` We also found free resources matched to their needs in ${subjList}.`
-    }
-    text += ' Here is everything we found.'
-    return text
-  }
 
   return (
     <>
@@ -71,117 +71,155 @@ export default function ResultsPanel({ structured, intakeData, language, t, anal
           overflow-y: auto;
           background: var(--color-bg);
         }
-        .results-inner {
-          padding: 0 1.25rem 1.25rem 1.25rem;
+        .results-page-layout {
+          display: flex;
+          align-items: flex-start;
+          gap: 1.25rem;
+          padding: 1.25rem;
+        }
+        .results-main {
+          flex: 1 1 0;
+          min-width: 0;
+          overflow: hidden;
+        }
+        .results-chat-panel {
+          flex-shrink: 0;
+          position: sticky;
+          top: 1rem;
+          height: calc(100vh - 2rem);
           display: flex;
           flex-direction: column;
-          gap: 0.875rem;
-          max-width: 760px;
+          background: #ffffff;
+          border: 1px solid var(--color-border);
+          border-radius: 12px;
+          overflow: hidden;
+          box-shadow: 0 1px 8px rgba(0,0,0,0.07);
+          width: 340px;
+          transition: width 0.22s ease;
+        }
+        .results-chat-panel--collapsed {
+          width: 44px;
+        }
+        @media (min-width: 900px) {
+          .results-chat-panel { display: flex; }
+          .anchor-chat-btn    { display: none !important; }
+        }
+        @media (max-width: 899px) {
+          .results-chat-panel  { display: none; }
+          .results-page-layout { display: block; padding: 1rem; }
+        }
+        .results-inner {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
         }
 
         /* Section 0 — district context bar */
         .results-district-bar {
-          padding: 0.5rem 1.25rem;
+          padding: 0.45rem 1.25rem;
           background: var(--color-surface);
           border-bottom: 1px solid var(--color-border);
-          font-size: 0.78rem;
+          font-size: 0.75rem;
           color: var(--color-text-muted);
           display: flex;
           align-items: center;
           gap: 0.5rem;
           flex-wrap: wrap;
-          margin-bottom: 0;
         }
         .results-state-badge {
-          font-size: 0.65rem;
+          font-size: 0.63rem;
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 0.06em;
-          padding: 0.2rem 0.5rem;
+          padding: 0.18rem 0.45rem;
           border-radius: var(--radius-pill);
           background: var(--color-navy);
           color: white;
         }
 
-        /* Section 1 — summary banner */
-        .results-summary-banner {
-          padding: 1.25rem;
-          background: var(--color-surface-warm);
-          border-left: 4px solid var(--color-amber);
-          border-radius: var(--radius-card);
+        /* Section 1 — stat chips */
+        .results-stat-chips {
           display: flex;
-          flex-direction: column;
-          gap: 0.875rem;
-          animation: fadeInUp 0.4s ease both;
+          gap: 0.75rem;
         }
-        .results-summary-text {
-          font-size: 1rem;
-          color: var(--color-navy);
-          line-height: 1.6;
-          font-weight: 400;
-        }
-        .results-jump-cta {
-          display: inline-block;
-          padding: 0.75rem 1.25rem;
-          background: var(--color-navy);
-          color: white;
-          font-size: 0.9rem;
-          font-weight: 600;
-          border-radius: var(--radius-sm);
-          text-decoration: none;
+        .results-stat-chip {
+          flex: 1;
+          padding: 1rem 0.75rem;
+          border-radius: 10px;
           text-align: center;
-          transition: opacity var(--transition-fast);
-          align-self: flex-start;
         }
-        .results-jump-cta:hover { opacity: 0.88; }
-        @media (max-width: 768px) {
-          .results-jump-cta { width: 100%; align-self: stretch; }
+        .results-stat-chip--programs {
+          background: rgba(212,130,10,0.10);
+          border: 1px solid rgba(212,130,10,0.28);
         }
-
-        /* Section wrappers */
-        .results-section-wrap {
-          display: flex;
-          flex-direction: column;
-          gap: 0;
+        .results-stat-chip--rights {
+          background: rgba(15,35,64,0.06);
+          border: 1px solid rgba(15,35,64,0.18);
+        }
+        .results-stat-chip--resources {
+          background: rgba(22,163,74,0.07);
+          border: 1px solid rgba(22,163,74,0.22);
+        }
+        .results-stat-chip-number {
+          font-size: 2rem;
+          font-weight: 700;
+          line-height: 1;
+          display: block;
+          margin-bottom: 0.3rem;
+        }
+        .results-stat-chip--programs .results-stat-chip-number { color: var(--color-amber); }
+        .results-stat-chip--rights   .results-stat-chip-number { color: var(--color-navy); }
+        .results-stat-chip--resources .results-stat-chip-number { color: #16a34a; }
+        .results-stat-chip-label {
+          font-size: 0.68rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: var(--color-text-muted);
+          display: block;
+          line-height: 1.3;
+        }
+        @media (max-width: 640px) {
+          .results-stat-chip        { padding: 0.75rem 0.5rem; }
+          .results-stat-chip-number { font-size: 1.6rem; }
         }
 
         /* Programs disclaimer */
         .results-programs-disclaimer {
-          padding: 0.75rem 1rem;
-          background: #fff8e6;
-          border: 1px solid #f5d76e;
+          padding: 0.6rem 0.875rem;
+          background: rgba(245,215,110,0.18);
+          border: 1px solid rgba(212,130,10,0.2);
           border-radius: var(--radius-sm);
-          font-size: 0.8rem;
-          color: var(--color-text);
-          line-height: 1.55;
-          margin-bottom: 0.625rem;
+          font-size: 0.78rem;
+          color: var(--color-text-muted);
+          line-height: 1.5;
+          margin-bottom: 0.5rem;
           display: flex;
-          gap: 0.5rem;
+          gap: 0.4rem;
           align-items: flex-start;
         }
         .results-programs-disclaimer-icon {
           flex-shrink: 0;
-          font-size: 0.9rem;
+          font-size: 0.85rem;
           margin-top: 0.05rem;
+          opacity: 0.7;
         }
 
         /* Footer notes */
         .results-privacy-note {
-          font-size: 0.78rem;
+          font-size: 0.75rem;
           color: var(--color-text-muted);
           line-height: 1.5;
-          padding: 0.5rem 0;
+          padding: 0.4rem 0;
           border-top: 1px solid var(--color-border);
         }
         .results-disclaimer {
-          padding: 0.875rem 1rem;
+          padding: 0.75rem 0.875rem;
           background: var(--color-surface-warm);
           border-radius: var(--radius-sm);
           border-left: 3px solid var(--color-amber);
-          font-size: 0.8rem;
+          font-size: 0.78rem;
           color: var(--color-text-muted);
           line-height: 1.55;
-          animation: fadeInUp 0.4s ease 0.2s both;
         }
 
         /* Error state */
@@ -222,10 +260,52 @@ export default function ResultsPanel({ structured, intakeData, language, t, anal
           to { opacity: 1; transform: translateY(0); }
         }
         @media (max-width: 768px) {
-          .results-inner { padding: 0 1rem 1rem 1rem; }
-          .results-district-bar { padding: 0.5rem 1rem; }
+          .results-district-bar { padding: 0.45rem 1rem; }
+        }
+
+        /* Toast */
+        .results-toast {
+          position: fixed;
+          bottom: 5.5rem;
+          right: 1.5rem;
+          background: #16a34a;
+          color: white;
+          padding: 0.65rem 1rem;
+          border-radius: var(--radius-sm);
+          font-size: 0.85rem;
+          font-weight: 500;
+          z-index: 1100;
+          opacity: 0;
+          transform: translateY(8px);
+          transition: opacity 0.25s ease, transform 0.25s ease;
+          pointer-events: none;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .results-toast.visible {
+          opacity: 1;
+          transform: translateY(0);
         }
       `}</style>
+
+      {/* Toast */}
+      <div
+        className={`results-toast${toastVisible ? ' visible' : ''}`}
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        ✓ Question added to your advocacy script
+      </div>
+
+      {/* Floating chat — mobile only */}
+      {structured && (
+        <AnchorChat
+          structured={structured}
+          intakeData={intakeData}
+          language={language}
+          t={t}
+        />
+      )}
 
       <div className="results-root" role="region" aria-label="Results">
         {analysisError ? (
@@ -238,7 +318,7 @@ export default function ResultsPanel({ structured, intakeData, language, t, anal
           <EmptyState t={t} />
         ) : (
           <>
-            {/* SECTION 0 — District context bar */}
+            {/* District bar — full width above layout */}
             {structured.district && (
               <div className="results-district-bar">
                 {structured.district.state && (
@@ -249,62 +329,89 @@ export default function ResultsPanel({ structured, intakeData, language, t, anal
               </div>
             )}
 
-            <div className="results-inner">
-              {/* SECTION 1 — Summary banner + jump CTA */}
-              <div className="results-summary-banner" role="note">
-                <p className="results-summary-text">{buildSummaryText()}</p>
-                <a href="#advocacy-script-section" className="results-jump-cta">
-                  {t.results.jumpToScript || 'Jump to Your Advocacy Script ↓'}
-                </a>
+            {/* Two-column layout */}
+            <div className="results-page-layout">
+              {/* LEFT */}
+              <div className="results-main">
+                <div className="results-inner">
+                  {/* Stat chips */}
+                  <div className="results-stat-chips" role="region" aria-label="Summary">
+                    <div className="results-stat-chip results-stat-chip--programs">
+                      <span className="results-stat-chip-number">{programRights.length}</span>
+                      <span className="results-stat-chip-label">{t.results.chipPrograms}</span>
+                    </div>
+                    <div className="results-stat-chip results-stat-chip--rights">
+                      <span className="results-stat-chip-number">{universalRights.length}</span>
+                      <span className="results-stat-chip-label">{t.results.chipRights}</span>
+                    </div>
+                    <div className="results-stat-chip results-stat-chip--resources">
+                      <span className="results-stat-chip-number">{resourceMatches?.primary?.length ?? 0}</span>
+                      <span className="results-stat-chip-label">{t.results.chipResources}</span>
+                    </div>
+                  </div>
+
+                  {/* Curriculum Gap */}
+                  {structured.curriculumGap && (
+                    <CurriculumGapCard
+                      data={structured.curriculumGap}
+                      selectedSubjects={selectedSubjects}
+                      englishProficiency={intakeData?.englishProficiency}
+                      homeGrade={intakeData?.homeGrade}
+                      t={t}
+                    />
+                  )}
+
+                  {/* Programs */}
+                  {programRights.length > 0 && (
+                    <div>
+                      <div className="results-programs-disclaimer">
+                        <span className="results-programs-disclaimer-icon" aria-hidden="true">⚠</span>
+                        <span>{t.results.programsDisclaimer}</span>
+                      </div>
+                      <RightsCards rights={programRights} mode="programs" t={t} intakeData={intakeData} />
+                    </div>
+                  )}
+
+                  {/* Rights */}
+                  {universalRights.length > 0 && (
+                    <RightsCards rights={universalRights} mode="rights" t={t} />
+                  )}
+
+                  {/* Resources */}
+                  <TutorCards intakeData={intakeData} t={t} precomputedMatches={resourceMatches} />
+
+                  {/* Advocacy Script */}
+                  <div id="advocacy-script-section">
+                    {structured.advocacyScript && (
+                      <AdvocacyScript
+                        script={structured.advocacyScript}
+                        intakeData={intakeData}
+                        t={t}
+                      />
+                    )}
+                  </div>
+
+                  <p className="results-privacy-note" role="note">
+                    {t.results.footerPrivacy || 'Anchor does not store your child\'s information. Everything stays private to your session.'}
+                  </p>
+                  <p className="results-disclaimer" role="note">
+                    {t.resultsDisclaimer}
+                  </p>
+                </div>
               </div>
 
-              {/* SECTION 2 — Curriculum Gap */}
-              {structured.curriculumGap && (
-                <CurriculumGapCard
-                  data={structured.curriculumGap}
-                  selectedSubjects={selectedSubjects}
-                  englishProficiency={intakeData?.englishProficiency}
-                  homeGrade={intakeData?.homeGrade}
+              {/* RIGHT — collapsible chat panel */}
+              <div className={`results-chat-panel${chatCollapsed ? ' results-chat-panel--collapsed' : ''}`}>
+                <AnchorChat
+                  mode="panel"
+                  collapsed={chatCollapsed}
+                  onToggleCollapse={() => setChatCollapsed(c => !c)}
+                  structured={structured}
+                  intakeData={intakeData}
+                  language={language}
                   t={t}
                 />
-              )}
-
-              {/* SECTION 3 — Programs Your Child May Qualify For */}
-              {programRights.length > 0 && (
-                <div>
-                  <div className="results-programs-disclaimer">
-                    <span className="results-programs-disclaimer-icon" aria-hidden="true">⚠</span>
-                    <span>{t.results.programsDisclaimer}</span>
-                  </div>
-                  <RightsCards rights={programRights} mode="programs" t={t} />
-                </div>
-              )}
-
-              {/* SECTION 4 — Your Child's Rights */}
-              {universalRights.length > 0 && (
-                <RightsCards rights={universalRights} mode="rights" t={t} />
-              )}
-
-              {/* SECTION 5 — Resources to Help Close the Gap */}
-              <TutorCards intakeData={intakeData} t={t} />
-
-              {/* SECTION 6 — Advocacy Script */}
-              <div id="advocacy-script-section">
-                {structured.advocacyScript && (
-                  <AdvocacyScript
-                    script={structured.advocacyScript}
-                    intakeData={intakeData}
-                    t={t}
-                  />
-                )}
               </div>
-
-              <p className="results-privacy-note" role="note">
-                {t.results.footerPrivacy || 'Anchor does not store your child\'s information. Everything stays private to your session.'}
-              </p>
-              <p className="results-disclaimer" role="note">
-                {t.resultsDisclaimer}
-              </p>
             </div>
           </>
         )}

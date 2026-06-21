@@ -70,6 +70,29 @@ class ChatRequest(BaseModel):
     profile: Profile = Profile()
 
 
+class ContextualContext(BaseModel):
+    homeCountry: Optional[str] = None
+    homeGrade: Optional[str] = None
+    englishProficiency: Optional[str] = None
+    districtName: Optional[str] = None
+    state: Optional[str] = None
+    concerns: list[str] = []
+    programs: list[str] = []
+    riskLevel: Optional[str] = None
+
+
+class ContextualChatRequest(BaseModel):
+    history: list[Message]
+    context: ContextualContext
+    language: str = "en"
+
+
+class OpeningRequest(BaseModel):
+    context: ContextualContext
+    programCount: int
+    language: str = "en"
+
+
 def format_district(s: dict) -> dict:
     return {
         "name": s["district_name"],
@@ -148,6 +171,92 @@ def build_results_system(language_name: str, language_code: str, district_data, 
         s += f"\n\nCURRICULUM GAP:\n{json.dumps(gap_data, ensure_ascii=False)}"
     s += "\n\n⚡ ALL REQUIRED FIELDS COLLECTED. Respond NOW with the full structured JSON response including rights array and advocacyScript. Do NOT ask any more questions."
     return s
+
+
+def build_contextual_system(ctx: ContextualContext, language_name: str) -> str:
+    programs_str = ", ".join(ctx.programs) if ctx.programs else "ESL/ELL services"
+    concerns_str = ", ".join(ctx.concerns) if ctx.concerns else "general support"
+    return f"""You are Anchor, an AI assistant helping an immigrant parent understand their child's education rights and support programs in the United States.
+
+The parent completed an intake with these details:
+- Home country: {ctx.homeCountry or 'not specified'}
+- Grade completed: {ctx.homeGrade or 'not specified'}
+- English proficiency: {ctx.englishProficiency or 'not specified'}
+- District: {ctx.districtName or 'not specified'}, {ctx.state or ''}
+- Areas of concern: {concerns_str}
+- Programs found: {programs_str}
+- Support level: {ctx.riskLevel or 'not specified'}
+
+You may ONLY answer questions related to:
+1. The specific programs listed above
+2. The child's rights under U.S. education law (Plyler v. Doe, IDEA, Title III, Title I)
+3. What the advocacy script says and how to use it
+4. What the parent can say or do at the school meeting
+5. General explanations of terms in the results
+
+You must NEVER:
+- Confirm the child definitely qualifies for any program (always say "may qualify" or "based on what you shared")
+- Give legal advice as a guarantee
+- Answer questions unrelated to the child's education navigation
+- Contact the school or take any action on the parent's behalf
+
+If asked something outside your scope, respond exactly:
+"That's a great question for your school counselor or an education advocate. Would you like me to add it to your advocacy script so you can ask them directly?"
+
+If the parent says yes to adding a question to the script, include this marker on its own line at the very end of your response:
+APPEND_TO_SCRIPT:[the question text]
+
+Keep all responses short — 2-4 sentences maximum. Use plain language. Avoid jargon.
+Respond in {language_name}."""
+
+
+@app.post("/api/chat/contextual/opening")
+async def contextual_opening(request: OpeningRequest):
+    try:
+        language_name = LANGUAGE_NAMES.get(request.language, "English")
+        ctx = request.context
+        prompt = (
+            f"Generate a single short, warm greeting (2-3 sentences) in {language_name} "
+            f"for a parent in {ctx.districtName or 'their district'}. "
+            f"Tell them you are here to help with the {request.programCount} program"
+            f"{'s' if request.programCount != 1 else ''} their child may qualify for, "
+            f"their child's rights at school, and how to use their advocacy script. "
+            f"Invite them to ask anything. "
+            f"Do not mention program names. Do not use bullet points. Plain language only."
+        )
+        response = client.messages.create(
+            model="claude-sonnet-4-6",
+            max_tokens=150,
+            messages=[{"role": "user", "content": prompt}],
+        )
+        return {"message": response.content[0].text.strip()}
+    except Exception as e:
+        logging.error("Opening message error: %s", e)
+        return {"message": None}
+
+
+@app.post("/api/chat/contextual")
+async def contextual_chat(request: ContextualChatRequest):
+    try:
+        language_name = LANGUAGE_NAMES.get(request.language, "English")
+        system = build_contextual_system(request.context, language_name)
+        messages = [{"role": m.role, "content": m.content} for m in request.history]
+        response = client.messages.create(
+            model="claude-sonnet-4-6",
+            max_tokens=512,
+            system=system,
+            messages=messages,
+        )
+        raw = response.content[0].text.strip()
+        append_to_script = None
+        if "APPEND_TO_SCRIPT:" in raw:
+            parts = raw.split("APPEND_TO_SCRIPT:", 1)
+            raw = parts[0].strip()
+            append_to_script = parts[1].strip().lstrip('[').rstrip(']')
+        return {"reply": raw, "appendToScript": append_to_script}
+    except Exception as e:
+        logging.error("Contextual chat error: %s", e)
+        return {"reply": "Something went wrong. Please try again.", "appendToScript": None}
 
 
 @app.post("/api/chat")

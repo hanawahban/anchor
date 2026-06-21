@@ -2,16 +2,6 @@ import { useState, useMemo, useRef, useEffect, useCallback } from 'react'
 import { getCountrySuggestions, PRIORITY_COUNTRIES } from '../data/countries.js'
 import { STATES, getStateCities, getCityDistricts, getStateSuggestions } from '../data/districts.js'
 
-const LANGUAGES = [
-  { code: 'en', native: 'English', english: 'English' },
-  { code: 'es', native: 'Español', english: 'Spanish' },
-  { code: 'ar', native: 'العربية', english: 'Arabic' },
-  { code: 'zh', native: '中文', english: 'Chinese' },
-  { code: 'fr', native: 'Français', english: 'French' },
-  { code: 'fil', native: 'Filipino', english: 'Filipino' },
-  { code: 'vi', native: 'Tiếng Việt', english: 'Vietnamese' },
-]
-
 // Grade indices grouped for button display
 const GRADE_GROUPS = [
   { key: 'primary', indices: [0, 1, 2, 3, 4, 5, 6] },   // Pre-K, K, 1-5
@@ -26,7 +16,7 @@ const GRADE_SHORT = [
   '6', '7', '8', '9', '10', '11', '12', 'Univ+',
 ]
 
-const TOTAL_STEPS = 7
+const TOTAL_STEPS = 6
 
 // Must stay index-aligned with every language's concernOptions in translations.js
 const CONCERN_KEYS = ['math', 'reading', 'science', 'writing', 'english', 'history', 'SAT prep', 'college counseling']
@@ -70,9 +60,9 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
 
   // Focus management
   useEffect(() => {
-    if (step === 2 && countryInputRef.current) countryInputRef.current.focus()
-    if (step === 6 && locPhase === 'state' && stateInputRef.current) stateInputRef.current.focus()
-    if (step === 5 && ageInputRef.current) ageInputRef.current.focus()
+    if (step === 1 && countryInputRef.current) countryInputRef.current.focus()
+    if (step === 5 && locPhase === 'state' && stateInputRef.current) stateInputRef.current.focus()
+    if (step === 4 && ageInputRef.current) ageInputRef.current.focus()
   }, [step, locPhase])
 
   function scheduleAdvance(toStep, delay = 200) {
@@ -97,12 +87,12 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
     }))
     setCountryQuery(country)
     setLocPhase('state')
-    scheduleAdvance(3)
+    scheduleAdvance(2)
   }
 
   function handleCountryNext() {
     if (!form.homeCountry.trim()) return
-    setStep(3)
+    setStep(2)
   }
 
   // ── GRADE (step 3) ─────────────────────────────────────────────────────────
@@ -116,10 +106,10 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
       state: '', stateCode: '', city: '', customCity: '',
       districtId: '', districtName: '', districtUncertain: false, concerns: [],
     }))
-    scheduleAdvance(4)
+    scheduleAdvance(3)
   }
 
-  // ── ENGLISH PROFICIENCY (step 4) ───────────────────────────────────────────
+  // ── ENGLISH PROFICIENCY (step 3) ───────────────────────────────────────────
   function handleEnglishProficiencySelect(value) {
     setForm(f => ({
       ...f,
@@ -128,10 +118,10 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
       state: '', stateCode: '', city: '', customCity: '',
       districtId: '', districtName: '', districtUncertain: false, concerns: [],
     }))
-    scheduleAdvance(5)
+    scheduleAdvance(4)
   }
 
-  // ── AGE (step 5) ───────────────────────────────────────────────────────────
+  // ── AGE (step 4) ───────────────────────────────────────────────────────────
   function handleAgeNext() {
     const val = parseInt(form.age, 10)
     if (!form.age || isNaN(val) || val < 3 || val > 22) {
@@ -139,7 +129,7 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
       return
     }
     setAgeError('')
-    setStep(6)
+    setStep(5)
     setLocPhase('state')
     setStateQuery(form.state || '')
     setCityInputMode(false)
@@ -185,7 +175,7 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
     setUnsureChosen(false)
     if (!districts || districts.length === 0) {
       // City not in dataset — skip disambiguation
-      scheduleAdvance(7)
+      scheduleAdvance(6)
     } else if (districts.length === 1) {
       // Single district — auto-fill, skip disambiguation
       setForm(f => ({
@@ -194,7 +184,7 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
         districtName: districts[0].name,
         districtUncertain: false,
       }))
-      scheduleAdvance(7)
+      scheduleAdvance(6)
     } else {
       // Multiple districts — show disambiguation
       setLocPhase('district')
@@ -209,7 +199,7 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
       districtId: '', districtName: '', districtUncertain: false,
     }))
     // Custom city: no district data, skip to step 7
-    setStep(7)
+    setStep(6)
   }
 
   // ── LOCATION — DISTRICT (step 5c) ──────────────────────────────────────────
@@ -226,7 +216,7 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
       districtUncertain: false,
     }))
     setUnsureChosen(false)
-    scheduleAdvance(7)
+    scheduleAdvance(6)
   }
 
   function handleDistrictUnsure() {
@@ -242,7 +232,7 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
   }
 
   function handleDistrictContinue() {
-    setStep(7)
+    setStep(6)
   }
 
   // ── CONCERNS (step 7) ──────────────────────────────────────────────────────
@@ -265,28 +255,21 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
     onComplete({ ...form, district: districtStr })
   }
 
-  // ── LANGUAGE (step 1) ──────────────────────────────────────────────────────
-  function handleLangSelect(code) {
-    setForm(f => ({ ...f, language: code }))
-    onLanguageChange(code)
-    scheduleAdvance(2)
-  }
-
   // ── BACK NAVIGATION ────────────────────────────────────────────────────────
   function handleBack() {
     if (autoAdvanceTimer.current) clearTimeout(autoAdvanceTimer.current)
     setAgeError('')
     setUnsureChosen(false)
 
-    if (step === 7) {
-      setStep(6)
+    if (step === 6) {
+      setStep(5)
       // Return to appropriate sub-phase
       if (cityDistricts && cityDistricts.length > 1) {
         setLocPhase('district')
       } else {
         setLocPhase('city')
       }
-    } else if (step === 6) {
+    } else if (step === 5) {
       if (locPhase === 'district') {
         setLocPhase('city')
         setForm(f => ({ ...f, districtId: '', districtName: '', districtUncertain: false }))
@@ -295,7 +278,7 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
         setCityInputMode(false)
         setForm(f => ({ ...f, city: '', customCity: '', districtId: '', districtName: '', districtUncertain: false }))
       } else {
-        setStep(5)
+        setStep(4)
       }
     } else {
       setStep(s => s - 1)
@@ -304,18 +287,18 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
 
   // ── PROGRESS ───────────────────────────────────────────────────────────────
   const progress = (() => {
-    if (step < 6) return (step / TOTAL_STEPS) * 100
-    if (step === 6) {
-      if (locPhase === 'state')    return (5.3 / TOTAL_STEPS) * 100
-      if (locPhase === 'city')     return (5.7 / TOTAL_STEPS) * 100
-      if (locPhase === 'district') return (6.1 / TOTAL_STEPS) * 100
+    if (step < 5) return (step / TOTAL_STEPS) * 100
+    if (step === 5) {
+      if (locPhase === 'state')    return (4.3 / TOTAL_STEPS) * 100
+      if (locPhase === 'city')     return (4.7 / TOTAL_STEPS) * 100
+      if (locPhase === 'district') return (5.1 / TOTAL_STEPS) * 100
     }
     return (step / TOTAL_STEPS) * 100
   })()
 
   // Step label shown in progress row
   const stepLabel = (() => {
-    if (step === 6) return w.steps[5]  // 'School District' / 'Location'
+    if (step === 5) return w.steps[4]  // 'School District' / 'Location'
     return w.steps[step - 1] || ''
   })()
 
@@ -323,11 +306,11 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
   const showBack = step > 1
 
   // Decide whether to show a Next button and whether it's active
-  const showNext = step === 2 || step === 5 || (step === 6 && locPhase === 'city' && cityInputMode)
+  const showNext = step === 1 || step === 4 || (step === 5 && locPhase === 'city' && cityInputMode)
   const nextEnabled = (() => {
-    if (step === 2) return form.homeCountry.trim().length > 0
-    if (step === 5) return form.age.trim().length > 0
-    if (step === 6 && locPhase === 'city' && cityInputMode) return cityInput.trim().length > 0
+    if (step === 1) return form.homeCountry.trim().length > 0
+    if (step === 4) return form.age.trim().length > 0
+    if (step === 5 && locPhase === 'city' && cityInputMode) return cityInput.trim().length > 0
     return false
   })()
 
@@ -408,52 +391,6 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
           color: var(--color-navy);
           line-height: 1.4;
           margin-bottom: 1.25rem;
-        }
-
-        /* ── Language grid ─────────────────────────────────────────────────── */
-        .wiz-lang-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 0.625rem;
-          margin-bottom: 1rem;
-        }
-        @media (min-width: 420px) {
-          .wiz-lang-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        .wiz-lang-btn {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.3rem;
-          padding: 0.875rem 0.625rem;
-          min-height: 64px;
-          border-radius: var(--radius-card);
-          border: 2px solid var(--color-border);
-          background: var(--color-surface);
-          cursor: pointer;
-          transition: border-color var(--transition-fast), background var(--transition-fast);
-          position: relative;
-        }
-        .wiz-lang-btn:hover { border-color: var(--color-navy-light); background: var(--color-surface-warm); }
-        .wiz-lang-btn.selected { border-color: var(--color-navy); background: #f0f4fa; }
-        .wiz-lang-btn:focus-visible { outline: 2px solid var(--color-amber); outline-offset: 2px; }
-        .wiz-lang-check {
-          position: absolute; top: 0.4rem; right: 0.4rem;
-          width: 1rem; height: 1rem;
-          background: var(--color-amber);
-          border-radius: 50%;
-          display: flex; align-items: center; justify-content: center;
-          color: white; font-size: 0.55rem; font-weight: 700;
-          opacity: 0; transition: opacity var(--transition-fast);
-        }
-        .wiz-lang-btn.selected .wiz-lang-check { opacity: 1; }
-        .wiz-lang-native {
-          font-family: var(--font-display);
-          font-size: 1.05rem; font-weight: 500; color: var(--color-navy);
-        }
-        .wiz-lang-english {
-          font-size: 0.65rem; font-weight: 500; color: var(--color-text-muted);
-          text-transform: uppercase; letter-spacing: 0.05em;
         }
 
         /* ── Autocomplete input + chip suggestions ─────────────────────────── */
@@ -827,31 +764,8 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
             </div>
           </div>
 
-          {/* ── STEP 1: Language ─────────────────────────────────────────── */}
+          {/* ── STEP 1: Country (autocomplete chips) ─────────────────────── */}
           {step === 1 && (
-            <>
-              <p className="wiz-question">{w.fields.language}</p>
-              <div className="wiz-lang-grid" role="radiogroup" aria-label={w.fields.language}>
-                {LANGUAGES.map(lang => (
-                  <button
-                    key={lang.code}
-                    className={`wiz-lang-btn${form.language === lang.code ? ' selected' : ''}`}
-                    onClick={() => handleLangSelect(lang.code)}
-                    role="radio"
-                    aria-checked={form.language === lang.code}
-                    aria-label={`${lang.native} — ${lang.english}`}
-                  >
-                    <span className="wiz-lang-check" aria-hidden="true">✓</span>
-                    <span className="wiz-lang-native">{lang.native}</span>
-                    <span className="wiz-lang-english">{lang.english}</span>
-                  </button>
-                ))}
-              </div>
-            </>
-          )}
-
-          {/* ── STEP 2: Country (autocomplete chips) ─────────────────────── */}
-          {step === 2 && (
             <>
               <p className="wiz-question">{w.fields.homeCountry}</p>
               <input
@@ -885,8 +799,8 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
             </>
           )}
 
-          {/* ── STEP 3: Grade (grouped button grid) ──────────────────────── */}
-          {step === 3 && (
+          {/* ── STEP 2: Grade (grouped button grid) ──────────────────────── */}
+          {step === 2 && (
             <>
               <p className="wiz-question">{w.fields.homeGrade}</p>
               {GRADE_GROUPS.map(group => (
@@ -914,8 +828,8 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
             </>
           )}
 
-          {/* ── STEP 4: English Proficiency ──────────────────────────────── */}
-          {step === 4 && (
+          {/* ── STEP 3: English Proficiency ──────────────────────────────── */}
+          {step === 3 && (
             <>
               <p className="wiz-question">{w.fields.englishProficiency}</p>
               <div className="wiz-prof-list" role="radiogroup" aria-label={w.fields.englishProficiency}>
@@ -940,8 +854,8 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
             </>
           )}
 
-          {/* ── STEP 5: Age ──────────────────────────────────────────────── */}
-          {step === 5 && (
+          {/* ── STEP 4: Age ──────────────────────────────────────────────── */}
+          {step === 4 && (
             <>
               <p className="wiz-question">{w.fields.age}</p>
               <input
@@ -961,8 +875,8 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
             </>
           )}
 
-          {/* ── STEP 6a: State (autocomplete chips) ──────────────────────── */}
-          {step === 6 && locPhase === 'state' && (
+          {/* ── STEP 5a: State (autocomplete chips) ──────────────────────── */}
+          {step === 5 && locPhase === 'state' && (
             <>
               <p className="wiz-question">{w.location.stateQuestion}</p>
               <input
@@ -992,8 +906,8 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
             </>
           )}
 
-          {/* ── STEP 6b: City (button chips) ─────────────────────────────── */}
-          {step === 6 && locPhase === 'city' && (
+          {/* ── STEP 5b: City (button chips) ─────────────────────────────── */}
+          {step === 5 && locPhase === 'city' && (
             <>
               <p className="wiz-question">{w.location.cityQuestion}</p>
               {!cityInputMode ? (
@@ -1037,8 +951,8 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
             </>
           )}
 
-          {/* ── STEP 6c: District disambiguation ────────────────────────── */}
-          {step === 6 && locPhase === 'district' && cityDistricts && (
+          {/* ── STEP 5c: District disambiguation ────────────────────────── */}
+          {step === 5 && locPhase === 'district' && cityDistricts && (
             <>
               <p className="wiz-question">
                 {w.location.districtQuestion.replace('{city}', form.city)}
@@ -1075,8 +989,8 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
             </>
           )}
 
-          {/* ── STEP 7: Concerns (chip multi-select) ─────────────────────── */}
-          {step === 7 && (
+          {/* ── STEP 6: Concerns (chip multi-select) ─────────────────────── */}
+          {step === 6 && (
             <>
               <p className="wiz-question">{w.fields.concerns}</p>
               <div className="wiz-concern-chips" role="group" aria-label={w.fields.concerns}>
@@ -1121,7 +1035,7 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
             {showNext && (
               <button
                 className="wiz-btn-next"
-                onClick={step === 5 ? handleAgeNext : step === 6 && locPhase === 'city' && cityInputMode ? handleCustomCityNext : handleCountryNext}
+                onClick={step === 4 ? handleAgeNext : step === 5 && locPhase === 'city' && cityInputMode ? handleCustomCityNext : handleCountryNext}
                 disabled={!nextEnabled}
                 type="button"
               >
@@ -1130,7 +1044,7 @@ export default function IntakeWizard({ language, onLanguageChange, onComplete, t
             )}
 
             {/* "I'm not sure" continue button */}
-            {step === 6 && locPhase === 'district' && unsureChosen && (
+            {step === 5 && locPhase === 'district' && unsureChosen && (
               <button className="wiz-btn-next" onClick={handleDistrictContinue} type="button">
                 {w.location.districtContinue}
               </button>

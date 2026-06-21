@@ -59,7 +59,7 @@ When you have all 3 required answers AND the system provides AVAILABLE RIGHTS DA
     ],
     "advocacyScript": {
       "language": "the user's language code (en/es/ar/zh/fr/fil/vi)",
-      "text": "A complete ready-to-say script in the user's chosen language. Address the counselor, state the child's grade and home country, cite the specific law, and request the specific support. Use [YOUR CHILD'S NAME] as a placeholder. Write in full sentences, warm and respectful."
+      "text": "A complete ready-to-say script in the user's chosen language. Address the counselor, state the child's grade and home country, cite the specific law, and request the specific support. Never use bracket placeholders. Always refer to the child as 'my child' or 'my child\\'s' since the parent\\'s name is not collected. Write in full sentences, warm and respectful."
     }
   },
   "profileUpdate": {}
@@ -70,6 +70,6 @@ RULES:
 - Never say "you qualify for..." — say "you have the right to request..."
 - Never make legal determinations — recommend consulting a caseworker for complex situations
 - Select 2–4 most relevant rights from the provided list (Plyler v. Doe is almost always relevant)
-- The advocacy script must be complete sentences, ready to say out loud — not a template with blanks except [YOUR CHILD'S NAME]
+- The advocacy script must be complete sentences, ready to say out loud — no bracket placeholders of any kind. Use "my child" or "my child's" wherever the child's name would appear.
 - Be warm, human, and empowering — these parents are navigating a stressful system in a second language
 """

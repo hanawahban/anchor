@@ -1,11 +1,10 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import translations from './translations/translations.js'
 import LanguageSelector from './components/LanguageSelector.jsx'
 import Disclaimer from './components/Disclaimer.jsx'
 import IntakeWizard from './components/IntakeWizard.jsx'
 import ReasoningInterstitial from './components/ReasoningInterstitial.jsx'
 import ResultsPanel from './components/ResultsPanel.jsx'
-import { analyzeStudent } from './api/chat.js'
 
 const ELL_IDS = new Set(['lau', 'ell', 'esl', 'lau-nichols', 'title-iii', 'titleiii'])
 const ELL_TITLE_KEYWORDS = ['language support', 'ell', 'esl', 'english learner', 'bilingual']
@@ -16,6 +15,18 @@ function isEllRight(r) {
   return ELL_TITLE_KEYWORDS.some(kw => titleLower.includes(kw))
 }
 
+const ELL_PHRASE_RE = /\s*with\s+(?:ell(?:\s+language)?|esl|english\s+language(?:\s+learner)?|language(?:\s+learner)?)\s+support/gi
+const ELL_SENTENCE_RE = /\b(ell|esl|english language learner|language support|ell assessment|bilingual support)\b/i
+
+function stripEllSentences(text) {
+  if (!text) return text
+  return text
+    .split(/(?<=[.!?])\s+/)
+    .filter(sentence => !ELL_SENTENCE_RE.test(sentence))
+    .join(' ')
+    .trim() || text
+}
+
 function applyProficiencyFilter(structured, englishProficiency) {
   if (!structured || !englishProficiency || englishProficiency === 'NONE') return structured
 
@@ -24,8 +35,9 @@ function applyProficiencyFilter(structured, englishProficiency) {
     const curriculumGap = structured.curriculumGap ? {
       ...structured.curriculumGap,
       usEquivalent: (structured.curriculumGap.usEquivalent || '')
-        .replace(/\s*with\s+(ell|esl|english language learner|language)\s+support/gi, '')
+        .replace(ELL_PHRASE_RE, '')
         .trim(),
+      notes: stripEllSentences(structured.curriculumGap.notes),
     } : structured.curriculumGap
     return { ...structured, rights: filteredRights, curriculumGap }
   }
@@ -55,9 +67,8 @@ export default function App() {
   const [mainPhase, setMainPhase] = useState('intake')   // 'intake' | 'analyzing' | 'results'
   const [intakeData, setIntakeData] = useState(null)
   const [structured, setStructured] = useState(null)
+  const [resourceMatches, setResourceMatches] = useState(null)
   const [analysisError, setAnalysisError] = useState(false)
-
-  const analysisPromiseRef = useRef(null)
 
   const t = translations[language] || translations.en
 
@@ -68,26 +79,13 @@ export default function App() {
 
   function handleIntakeComplete(formData) {
     setIntakeData(formData)
-    // Start API call immediately; pass the Promise to the interstitial
-    analysisPromiseRef.current = analyzeStudent({
-      homeCountry:  formData.homeCountry,
-      homeGrade:    formData.homeGrade,
-      age:          formData.age,
-      district:     formData.district,
-      districtId:   formData.districtId,
-      districtName: formData.districtName,
-      city:         formData.city,
-      state:        formData.state,
-      concerns:     formData.concerns,
-      language:     formData.language,
-      englishProficiency: formData.englishProficiency,
-    })
     setMainPhase('analyzing')
   }
 
-  function handleAnalysisDone(result) {
+  function handleAnalysisDone(result, matches) {
     if (result && result.structured) {
       setStructured(applyProficiencyFilter(result.structured, intakeData?.englishProficiency))
+      setResourceMatches(matches || null)
       setAnalysisError(false)
     } else {
       setAnalysisError(true)
@@ -99,8 +97,8 @@ export default function App() {
     setMainPhase('intake')
     setIntakeData(null)
     setStructured(null)
+    setResourceMatches(null)
     setAnalysisError(false)
-    analysisPromiseRef.current = null
   }
 
   if (screen === 'language') {
@@ -140,10 +138,8 @@ export default function App() {
   if (mainPhase === 'analyzing') {
     return (
       <ReasoningInterstitial
-        homeCountry={intakeData?.homeCountry}
-        district={intakeData?.district}
+        intakeData={intakeData}
         t={t}
-        analysisPromise={analysisPromiseRef.current}
         onComplete={handleAnalysisDone}
       />
     )
@@ -306,23 +302,12 @@ export default function App() {
             language={language}
             t={t}
             analysisError={analysisError}
+            resourceMatches={resourceMatches}
             onRetry={() => {
               setAnalysisError(false)
               setStructured(null)
+              setResourceMatches(null)
               setMainPhase('analyzing')
-              analysisPromiseRef.current = analyzeStudent({
-                homeCountry:  intakeData.homeCountry,
-                homeGrade:    intakeData.homeGrade,
-                age:          intakeData.age,
-                district:     intakeData.district,
-                districtId:   intakeData.districtId,
-                districtName: intakeData.districtName,
-                city:         intakeData.city,
-                state:        intakeData.state,
-                concerns:     intakeData.concerns,
-                language:     intakeData.language,
-                englishProficiency: intakeData.englishProficiency,
-              })
             }}
           />
         </div>

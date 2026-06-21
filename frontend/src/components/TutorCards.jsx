@@ -2,7 +2,54 @@ import { useState } from 'react'
 import { ALL_TUTORS } from '../data/tutors.js'
 import { matchTutors } from '../utils/tutorMatcher.js'
 
-function TutorCard({ tutor, matchReason, t }) {
+const CONCERN_KEYS = ['math', 'reading', 'science', 'writing', 'english', 'history', 'SAT prep', 'college counseling']
+
+const SUBJECT_TO_IDX = {
+  'math': 0, 'reading': 1, 'science': 2, 'writing': 3, 'essay writing': 3,
+  'english': 4, 'history': 5, 'SAT prep': 6, 'college counseling': 7,
+}
+
+function localizeSubject(rawSubject, t) {
+  const idx = SUBJECT_TO_IDX[rawSubject] ?? CONCERN_KEYS.indexOf(rawSubject)
+  return idx >= 0 ? (t.wizard?.fields?.concernOptions?.[idx] || rawSubject) : rawSubject
+}
+
+function buildLocalizedMatchReason(matchData, t) {
+  if (!matchData) return null
+  const { type, subjects, lang, fmtDetail, gradeNum, isEnglishOnly } = matchData
+
+  const gradeLabel = gradeNum === 0
+    ? (t.results.matchGradeLabelK || 'Kindergarten')
+    : gradeNum != null
+      ? (t.results.matchGradeLabel || 'Grade {n}').replace('{n}', gradeNum)
+      : null
+
+  const subjectsList = subjects.map(s => localizeSubject(s, t)).join(', ')
+  const formatSuffix = fmtDetail ? ` (${fmtDetail})` : ''
+  const englishNote = isEnglishOnly ? (t.results.matchEnglishOnlyNote || ' — available in English only') : ''
+
+  switch (type) {
+    case 'subjectLang': {
+      const tmpl = t.results.matchSubjectLang || 'covers {subjects} with {lang} support — aligned with {grade} level'
+      return tmpl.replace('{subjects}', subjectsList).replace('{lang}', lang || '').replace('{grade}', gradeLabel || '') + formatSuffix
+    }
+    case 'subjectOnly': {
+      const tmpl = t.results.matchSubjectOnly || 'covers {subjects} at {grade} level'
+      return tmpl.replace('{subjects}', subjectsList).replace('{grade}', gradeLabel || '') + formatSuffix + englishNote
+    }
+    case 'langOnly': {
+      const tmpl = t.results.matchLangOnly || 'available in {lang} — builds comfort before academic tutoring'
+      return tmpl.replace('{lang}', lang || '') + formatSuffix
+    }
+    default: {
+      const tmpl = t.results.matchGeneric || 'free resource for {grade} level students'
+      return tmpl.replace('{grade}', gradeLabel || '')
+    }
+  }
+}
+
+function TutorCard({ tutor, matchData, t }) {
+  const matchReason = buildLocalizedMatchReason(matchData, t)
   return (
     <div className="tutor-card">
       <div className="tutor-top">
@@ -14,7 +61,7 @@ function TutorCard({ tutor, matchReason, t }) {
       {tutor.subjects && tutor.subjects.length > 0 && (
         <div className="tutor-meta">
           {tutor.subjects.slice(0, 4).map(s => (
-            <span key={s} className="tutor-pill">{s}</span>
+            <span key={s} className="tutor-pill">{localizeSubject(s, t)}</span>
           ))}
         </div>
       )}
@@ -46,11 +93,11 @@ function TutorCard({ tutor, matchReason, t }) {
   )
 }
 
-export default function TutorCards({ intakeData, t }) {
+export default function TutorCards({ intakeData, t, precomputedMatches }) {
   const [moreOpen, setMoreOpen] = useState(false)
   const [otherOpen, setOtherOpen] = useState(false)
 
-  const { primary, moreMatched, other, skipped } = matchTutors(ALL_TUTORS, intakeData)
+  const { primary, moreMatched, other, skipped } = precomputedMatches ?? matchTutors(ALL_TUTORS, intakeData)
 
   if (primary.length === 0 && moreMatched.length === 0 && other.length === 0) return null
 
@@ -220,7 +267,7 @@ export default function TutorCards({ intakeData, t }) {
             <TutorCard
               key={tutor.platform || i}
               tutor={tutor}
-              matchReason={skipped ? null : tutor.matchReason}
+              matchData={skipped ? null : tutor.matchData}
               t={t}
             />
           ))}
@@ -243,7 +290,7 @@ export default function TutorCards({ intakeData, t }) {
                   <TutorCard
                     key={tutor.platform || i}
                     tutor={tutor}
-                    matchReason={skipped ? null : tutor.matchReason}
+                    matchData={skipped ? null : tutor.matchData}
                     t={t}
                   />
                 ))}
@@ -269,7 +316,7 @@ export default function TutorCards({ intakeData, t }) {
                   <TutorCard
                     key={tutor.platform || i}
                     tutor={tutor}
-                    matchReason={null}
+                    matchData={null}
                     t={t}
                   />
                 ))}

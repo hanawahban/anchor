@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // CONCERN_KEYS must match IntakeWizard.jsx CONCERN_KEYS (index-aligned with translations concernOptions)
 const CONCERN_KEYS = ['math', 'reading', 'science', 'writing', 'english', 'history', 'SAT prep', 'college counseling']
@@ -9,7 +9,7 @@ function buildScriptText(baseText, intakeData, t) {
 
   const subjectList = concerns.map(k => k.charAt(0).toUpperCase() + k.slice(1)).join(', ')
   const template = t.results?.scriptSubjectSentence ||
-    "We are particularly concerned about [YOUR CHILD'S NAME]'s progress in {subjects} and request that the assessment include evaluation of these areas specifically."
+    "We are particularly concerned about my child's progress in {subjects} and request that the assessment include evaluation of these areas specifically."
   const subjectSentence = template.replace('{subjects}', subjectList)
 
   return baseText.trim() + '\n\n' + subjectSentence
@@ -17,10 +17,20 @@ function buildScriptText(baseText, intakeData, t) {
 
 export default function AdvocacyScript({ script, intakeData, t }) {
   const [copied, setCopied] = useState(false)
+  const [appendedText, setAppendedText] = useState('')
+
+  useEffect(() => {
+    function handleAppend(e) {
+      const q = e.detail?.question
+      if (q) setAppendedText(prev => prev + `\n\nQuestion to ask your counselor:\n${q}`)
+    }
+    window.addEventListener('anchor:appendToScript', handleAppend)
+    return () => window.removeEventListener('anchor:appendToScript', handleAppend)
+  }, [])
 
   if (!script || !script.text) return null
 
-  const fullText = buildScriptText(script.text, intakeData, t)
+  const fullText = buildScriptText(script.text, intakeData, t) + appendedText
 
   async function handleCopy() {
     try {

@@ -1,4 +1,4 @@
-const COUNTRY_LANGUAGE = {
+export const COUNTRY_LANGUAGE = {
   Mexico: 'Spanish', Colombia: 'Spanish', Honduras: 'Spanish', Guatemala: 'Spanish',
   'El Salvador': 'Spanish', Cuba: 'Spanish', Ecuador: 'Spanish',
   'Dominican Republic': 'Spanish', Venezuela: 'Spanish', Peru: 'Spanish',
@@ -69,32 +69,19 @@ function formatDetail(tutor) {
   return `${tutor.grades || 'K-12'} level`
 }
 
-function buildMatchReason(tutor, subjectMatches, studentLang, homeGrade, englishProficiency) {
+function buildMatchData(tutor, subjectMatches, studentLang, homeGrade) {
   const gradeNum = gradeToNum(homeGrade)
-  const gradeLabel = gradeNum !== null && gradeNum > 0 ? `Grade ${gradeNum}` : (gradeNum === 0 ? 'K' : homeGrade)
   const langSupport = studentLang && tutor.languages.includes(studentLang)
   const isEnglishOnly = tutor.languages.length === 1 && tutor.languages[0] === 'English'
-  const detail = formatDetail(tutor)
+  const fmtDetail = formatDetail(tutor)
 
-  if (subjectMatches.length > 0 && langSupport) {
-    const subjList = subjectMatches.slice(0, 2).map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' and ')
-    const suffix = detail ? ` via ${detail}` : ''
-    return `Matched because: covers ${subjList} with ${studentLang} support${suffix} — aligned with your child's ${gradeLabel} level`
-  }
+  let type
+  if (subjectMatches.length > 0 && langSupport) type = 'subjectLang'
+  else if (subjectMatches.length > 0) type = 'subjectOnly'
+  else if (langSupport) type = 'langOnly'
+  else type = 'generic'
 
-  if (subjectMatches.length > 0) {
-    const subjList = subjectMatches.slice(0, 2).map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' and ')
-    const englishNote = isEnglishOnly ? ' — note: available in English only' : ''
-    const suffix = detail ? ` (${detail})` : ''
-    return `Matched because: covers ${subjList} at ${gradeLabel} level${suffix}${englishNote}`
-  }
-
-  if (langSupport) {
-    const suffix = detail ? ` via ${detail}` : ''
-    return `Available in ${studentLang}${suffix} — good for building comfort before academic tutoring`
-  }
-
-  return `Free resource available for ${gradeLabel} level students`
+  return { type, subjects: subjectMatches.slice(0, 2), lang: studentLang, fmtDetail, gradeNum, isEnglishOnly }
 }
 
 export function scoreTutor(tutor, { selectedSubjects, homeCountry, homeGrade, englishProficiency }) {
@@ -125,11 +112,11 @@ export function scoreTutor(tutor, { selectedSubjects, homeCountry, homeGrade, en
     score += 2
   }
 
-  const matchReason = buildMatchReason(tutor, subjectMatches, studentLang, homeGrade, englishProficiency)
+  const matchData = buildMatchData(tutor, subjectMatches, studentLang, homeGrade)
 
   return {
     score,
-    matchReason,
+    matchData,
     subjectMatch: subjectMatches.length > 0,
   }
 }

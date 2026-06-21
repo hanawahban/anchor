@@ -1,7 +1,18 @@
-export default function RightsCards({ rights, mode, t }) {
+export default function RightsCards({ rights, mode, t, intakeData }) {
   if (!rights || rights.length === 0) return null
 
   const isPrograms = mode === 'programs'
+
+  let priorityCardIndex = 0
+  if (isPrograms) {
+    const priorityId =
+      (intakeData?.englishProficiency === 'NONE' || intakeData?.englishProficiency === 'SOME')
+        ? 'native-language-assessment'
+        : 'title1-tutoring'
+    const found = rights.findIndex(r => r.id === priorityId)
+    if (found >= 0) priorityCardIndex = found
+  }
+
   const heading = isPrograms
     ? (t.results.programsHeading || 'Programs Your Child May Qualify For')
     : t.results.rightsHeading
@@ -105,6 +116,15 @@ export default function RightsCards({ rights, mode, t }) {
           color: #b8700a;
           text-decoration: underline;
         }
+        .rights-priority-label {
+          font-size: 0.68rem;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: var(--color-amber);
+          font-weight: 600;
+          display: block;
+          margin-bottom: 0.5rem;
+        }
       `}</style>
       <div className="rights-section">
         <div className="rights-heading">{heading}</div>
@@ -115,6 +135,9 @@ export default function RightsCards({ rights, mode, t }) {
               className="right-card"
               role="listitem"
             >
+              {isPrograms && i === priorityCardIndex && (
+                <span className="rights-priority-label">{t.results.priorityLabel || 'Most Important for Your Child'}</span>
+              )}
               <div className="right-law-badge">{right.law}</div>
               <h3 className="right-title">{right.title}</h3>
               <p className="right-summary">{right.summary}</p>

@@ -5,11 +5,11 @@
     "state": "TX",
     "title1_status": true,
     "ell_program": "Bilingual/ESL program available at all schools",
-    "ell_contact_url": "https://www.houstonisd.org/multilingual",
+    "ell_contact_url": "https://www.houstonisd.org/schools-academics/academics/multilingual/multilingual-program-models",
     "ell_phone": "713-556-6960",
     "top_languages": ["Spanish", "Vietnamese", "Arabic"],
     "tutoring_programs": ["Title I tutoring", "Houston Public Library programs"],
-    "parent_rights_url": "https://www.houstonisd.org/parentrights"
+    "parent_rights_url": "https://www.houstonisd.org/schools_resources_parentrights"
   },
   {
     "district_id": "nyc-doe",
@@ -17,11 +17,11 @@
     "state": "NY",
     "title1_status": true,
     "ell_program": "Multilingual Learners program, bilingual and ESL options",
-    "ell_contact_url": "https://www.schools.nyc.gov/learning/language",
+    "ell_contact_url": "https://www.schools.nyc.gov/learning/multilingual-learners/english-language-learners",
     "ell_phone": "718-935-2009",
     "top_languages": ["Spanish", "Chinese", "Arabic", "Bengali"],
     "tutoring_programs": ["Title I tutoring", "NYC Public Library tutoring", "After-school programs"],
-    "parent_rights_url": "https://www.schools.nyc.gov/school-life/policies-for-all/parents-bill-of-rights"
+    "parent_rights_url": "https://www.schools.nyc.gov/school-life/know-your-rights/parents-bill-of-rights"
   },
   {
     "district_id": "lausd",
@@ -29,11 +29,11 @@
     "state": "CA",
     "title1_status": true,
     "ell_program": "English Learner programs including dual language and SEI",
-    "ell_contact_url": "https://www.lausd.net/multilingual",
+    "ell_contact_url": "https://www.lausd.org/page/1805",
     "ell_phone": "213-241-5337",
     "top_languages": ["Spanish", "Korean", "Armenian", "Tagalog"],
     "tutoring_programs": ["Title I tutoring", "LA Public Library programs", "EL Achieve"],
-    "parent_rights_url": "https://www.lausd.net/parentrights"
+    "parent_rights_url": "https://families.lausd.org/apps/pages/index.jsp?uREC_ID=4390902&type=d&pREC_ID=2607895"
   },
   {
     "district_id": "chicago-ps",
@@ -41,11 +41,11 @@
     "state": "IL",
     "title1_status": true,
     "ell_program": "Transitional Bilingual Education and ESL programs",
-    "ell_contact_url": "https://www.cps.edu/services-and-supports/multilingual-education/",
+    "ell_contact_url": "https://www.cps.edu/academics/language-and-culture/english-learners-program/",
     "ell_phone": "773-553-1940",
     "top_languages": ["Spanish", "Polish", "Arabic", "Chinese"],
     "tutoring_programs": ["Title I tutoring", "Chicago Public Library programs"],
-    "parent_rights_url": "https://www.cps.edu/parentrights"
+    "parent_rights_url": "https://www.cps.edu/services-and-supports/special-education/know-your-rights/"
   },
   {
     "district_id": "miami-dade",
@@ -65,11 +65,11 @@
     "state": "TX",
     "title1_status": true,
     "ell_program": "Bilingual and ESL programs districtwide",
-    "ell_contact_url": "https://www.dallasisd.org/bilingual",
+    "ell_contact_url": "https://www.dallasisd.org/",
     "ell_phone": "972-925-4200",
     "top_languages": ["Spanish", "Arabic", "Vietnamese"],
     "tutoring_programs": ["Title I tutoring", "Dallas Public Library programs"],
-    "parent_rights_url": "https://www.dallasisd.org/parentrights"
+    "parent_rights_url": "https://www.dallasisd.org/"
   },
   {
     "district_id": "clark-county-nv",
@@ -77,11 +77,11 @@
     "state": "NV",
     "title1_status": true,
     "ell_program": "English Language Learner services at all schools",
-    "ell_contact_url": "https://www.ccsd.net/departments/ell/",
+    "ell_contact_url": "https://www.ccsd.net/",
     "ell_phone": "702-799-8658",
     "top_languages": ["Spanish", "Tagalog", "Chinese"],
     "tutoring_programs": ["Title I tutoring", "Las Vegas Clark County Library programs"],
-    "parent_rights_url": "https://www.ccsd.net/parentrights"
+    "parent_rights_url": "https://www.ccsd.net/"
   },
   {
     "district_id": "broward-county-fl",
@@ -89,11 +89,11 @@
     "state": "FL",
     "title1_status": true,
     "ell_program": "ESOL services and bilingual support",
-    "ell_contact_url": "https://www.browardschools.com/esol",
+    "ell_contact_url": "https://www.browardschools.com/bcps-departments/bilingualesol",
     "ell_phone": "754-321-2400",
     "top_languages": ["Spanish", "Haitian Creole", "Portuguese"],
     "tutoring_programs": ["Title I tutoring", "Broward County Library programs"],
-    "parent_rights_url": "https://www.browardschools.com/parentrights"
+    "parent_rights_url": "https://www.browardschools.com/"
   },
   {
     "district_id": "gwinnett-county-ga",
@@ -101,11 +101,11 @@
     "state": "GA",
     "title1_status": true,
     "ell_program": "English to Speakers of Other Languages (ESOL) program",
-    "ell_contact_url": "https://www.gcpsk12.org/esol",
+    "ell_contact_url": "https://www.gcpsk12.org/",
     "ell_phone": "678-301-6000",
     "top_languages": ["Spanish", "Korean", "Hindi", "Vietnamese"],
     "tutoring_programs": ["Title I tutoring", "Gwinnett Public Library programs"],
-    "parent_rights_url": "https://www.gcpsk12.org/parentrights"
+    "parent_rights_url": "https://www.gcpsk12.org/"
   },
   {
     "district_id": "prince-georges-md",
@@ -117,7 +117,7 @@
     "ell_phone": "301-952-6000",
     "top_languages": ["Spanish", "French", "Amharic"],
     "tutoring_programs": ["Title I tutoring", "Prince George's County Library programs"],
-    "parent_rights_url": "https://www.pgcps.org/parentrights"
+    "parent_rights_url": "https://www.pgcps.org/"
   },
   {
     "district_id": "austin-isd",
@@ -125,11 +125,11 @@
     "state": "TX",
     "title1_status": true,
     "ell_program": "Dual Language and ESL programs at multiple campuses",
-    "ell_contact_url": "https://www.austinisd.org/ell",
+    "ell_contact_url": "https://www.austinisd.org/",
     "ell_phone": "512-414-9900",
     "top_languages": ["Spanish", "Vietnamese", "Arabic"],
     "tutoring_programs": ["Title I tutoring", "Austin Public Library programs"],
-    "parent_rights_url": "https://www.austinisd.org/parentrights"
+    "parent_rights_url": "https://www.austinisd.org/"
   },
   {
     "district_id": "fort-worth-isd",
@@ -137,11 +137,11 @@
     "state": "TX",
     "title1_status": true,
     "ell_program": "Bilingual and ESL programs serving over 40 languages",
-    "ell_contact_url": "https://www.fwisd.org/ell",
+    "ell_contact_url": "https://www.fwisd.org/",
     "ell_phone": "817-871-2000",
     "top_languages": ["Spanish", "Somali", "Burmese", "Arabic"],
     "tutoring_programs": ["Title I tutoring", "Fort Worth Public Library programs"],
-    "parent_rights_url": "https://www.fwisd.org/parentrights"
+    "parent_rights_url": "https://www.fwisd.org/"
   },
   {
     "district_id": "san-antonio-isd",
@@ -149,11 +149,11 @@
     "state": "TX",
     "title1_status": true,
     "ell_program": "Dual Language and ESL services districtwide",
-    "ell_contact_url": "https://www.saisd.net/ell",
+    "ell_contact_url": "https://www.saisd.net/",
     "ell_phone": "210-554-2200",
     "top_languages": ["Spanish", "Arabic", "Vietnamese"],
     "tutoring_programs": ["Title I tutoring", "San Antonio Public Library programs"],
-    "parent_rights_url": "https://www.saisd.net/parentrights"
+    "parent_rights_url": "https://www.saisd.net/"
   },
   {
     "district_id": "el-paso-isd",
@@ -161,11 +161,11 @@
     "state": "TX",
     "title1_status": true,
     "ell_program": "Bilingual Education and ESL programs at all levels",
-    "ell_contact_url": "https://www.episd.org/ell",
+    "ell_contact_url": "https://www.episd.org/",
     "ell_phone": "915-230-2000",
     "top_languages": ["Spanish", "Arabic"],
     "tutoring_programs": ["Title I tutoring", "El Paso Public Library programs"],
-    "parent_rights_url": "https://www.episd.org/parentrights"
+    "parent_rights_url": "https://www.episd.org/"
   },
   {
     "district_id": "north-east-isd",
@@ -173,11 +173,11 @@
     "state": "TX",
     "title1_status": true,
     "ell_program": "ESL and Dual Language programs across the district",
-    "ell_contact_url": "https://www.neisd.net/ell",
+    "ell_contact_url": "https://www.neisd.net/",
     "ell_phone": "210-407-0000",
     "top_languages": ["Spanish", "Arabic", "Tagalog"],
     "tutoring_programs": ["Title I tutoring", "San Antonio Public Library programs"],
-    "parent_rights_url": "https://www.neisd.net/parentrights"
+    "parent_rights_url": "https://www.neisd.net/"
   },
   {
     "district_id": "san-diego-usd",
@@ -185,11 +185,11 @@
     "state": "CA",
     "title1_status": true,
     "ell_program": "English Learner and Dual Language programs districtwide",
-    "ell_contact_url": "https://www.sandi.net/ell",
+    "ell_contact_url": "https://www.sandi.net/",
     "ell_phone": "619-725-8000",
     "top_languages": ["Spanish", "Vietnamese", "Tagalog", "Somali"],
     "tutoring_programs": ["Title I tutoring", "San Diego Public Library programs"],
-    "parent_rights_url": "https://www.sandi.net/parentrights"
+    "parent_rights_url": "https://www.sandi.net/"
   },
   {
     "district_id": "fresno-usd",
@@ -197,11 +197,11 @@
     "state": "CA",
     "title1_status": true,
     "ell_program": "English Learner and Hmong bilingual programs",
-    "ell_contact_url": "https://www.fresnounified.org/ell",
+    "ell_contact_url": "https://www.fresnounified.org/",
     "ell_phone": "559-457-3000",
     "top_languages": ["Spanish", "Hmong", "Punjabi", "Arabic"],
     "tutoring_programs": ["Title I tutoring", "Fresno County Public Library programs"],
-    "parent_rights_url": "https://www.fresnounified.org/parentrights"
+    "parent_rights_url": "https://www.fresnounified.org/"
   },
   {
     "district_id": "santa-ana-usd",
@@ -209,11 +209,11 @@
     "state": "CA",
     "title1_status": true,
     "ell_program": "Dual Language Immersion and ESL services districtwide",
-    "ell_contact_url": "https://www.sausd.us/ell",
+    "ell_contact_url": "https://www.sausd.us/",
     "ell_phone": "714-558-5501",
     "top_languages": ["Spanish", "Vietnamese", "Khmer"],
     "tutoring_programs": ["Title I tutoring", "Santa Ana Public Library programs"],
-    "parent_rights_url": "https://www.sausd.us/parentrights"
+    "parent_rights_url": "https://www.sausd.us/"
   },
   {
     "district_id": "oakland-usd",
@@ -221,11 +221,11 @@
     "state": "CA",
     "title1_status": true,
     "ell_program": "Multilingual Pathways including Dual Language and SEI",
-    "ell_contact_url": "https://www.ousd.org/multilingual",
+    "ell_contact_url": "https://www.ousd.org/",
     "ell_phone": "510-879-8000",
     "top_languages": ["Spanish", "Cantonese", "Vietnamese", "Somali"],
     "tutoring_programs": ["Title I tutoring", "Oakland Public Library programs"],
-    "parent_rights_url": "https://www.ousd.org/parentrights"
+    "parent_rights_url": "https://www.ousd.org/"
   },
   {
     "district_id": "san-francisco-usd",
@@ -233,11 +233,11 @@
     "state": "CA",
     "title1_status": true,
     "ell_program": "English Learner Master Plan with bilingual and SEI options",
-    "ell_contact_url": "https://www.sfusd.edu/ell",
+    "ell_contact_url": "https://www.sfusd.edu/",
     "ell_phone": "415-241-6000",
     "top_languages": ["Spanish", "Cantonese", "Mandarin", "Tagalog"],
     "tutoring_programs": ["Title I tutoring", "San Francisco Public Library programs"],
-    "parent_rights_url": "https://www.sfusd.edu/parentrights"
+    "parent_rights_url": "https://www.sfusd.edu/"
   },
   {
     "district_id": "sacramento-city-usd",
@@ -245,11 +245,11 @@
     "state": "CA",
     "title1_status": true,
     "ell_program": "English Language Development and Dual Language programs",
-    "ell_contact_url": "https://www.scusd.edu/ell",
+    "ell_contact_url": "https://www.scusd.edu/",
     "ell_phone": "916-643-7400",
     "top_languages": ["Spanish", "Hmong", "Russian", "Vietnamese"],
     "tutoring_programs": ["Title I tutoring", "Sacramento Public Library programs"],
-    "parent_rights_url": "https://www.scusd.edu/parentrights"
+    "parent_rights_url": "https://www.scusd.edu/"
   },
   {
     "district_id": "long-beach-usd",
@@ -257,11 +257,11 @@
     "state": "CA",
     "title1_status": true,
     "ell_program": "English Learner programs including Dual Language and SDAIE",
-    "ell_contact_url": "https://www.lbusd.org/ell",
+    "ell_contact_url": "https://www.lbusd.org/",
     "ell_phone": "562-997-8000",
     "top_languages": ["Spanish", "Khmer", "Tagalog", "Vietnamese"],
     "tutoring_programs": ["Title I tutoring", "Long Beach Public Library programs"],
-    "parent_rights_url": "https://www.lbusd.org/parentrights"
+    "parent_rights_url": "https://www.lbusd.org/"
   },
   {
     "district_id": "tucson-unified",
@@ -269,11 +269,11 @@
     "state": "AZ",
     "title1_status": true,
     "ell_program": "English Language Learner and bilingual education programs",
-    "ell_contact_url": "https://www.tusd1.org/ell",
+    "ell_contact_url": "https://www.tusd1.org/",
     "ell_phone": "520-225-6040",
     "top_languages": ["Spanish", "Somali", "Arabic"],
     "tutoring_programs": ["Title I tutoring", "Tucson Public Library programs"],
-    "parent_rights_url": "https://www.tusd1.org/parentrights"
+    "parent_rights_url": "https://www.tusd1.org/"
   },
   {
     "district_id": "mesa-usd",
@@ -281,11 +281,11 @@
     "state": "AZ",
     "title1_status": true,
     "ell_program": "ELL and Dual Language programs at select campuses",
-    "ell_contact_url": "https://www.mpsaz.org/ell",
+    "ell_contact_url": "https://www.mpsaz.org/",
     "ell_phone": "480-472-0000",
     "top_languages": ["Spanish", "Somali", "Arabic"],
     "tutoring_programs": ["Title I tutoring", "Mesa Public Library programs"],
-    "parent_rights_url": "https://www.mpsaz.org/parentrights"
+    "parent_rights_url": "https://www.mpsaz.org/"
   },
   {
     "district_id": "phoenix-union",
@@ -293,11 +293,11 @@
     "state": "AZ",
     "title1_status": true,
     "ell_program": "Structured English Immersion and ELL support programs",
-    "ell_contact_url": "https://www.phxunion.org/ell",
+    "ell_contact_url": "https://www.phxunion.org/",
     "ell_phone": "602-764-1100",
     "top_languages": ["Spanish", "Somali", "Arabic"],
     "tutoring_programs": ["Title I tutoring", "Phoenix Public Library programs"],
-    "parent_rights_url": "https://www.phxunion.org/parentrights"
+    "parent_rights_url": "https://www.phxunion.org/"
   },
   {
     "district_id": "peoria-usd-az",
@@ -305,11 +305,11 @@
     "state": "AZ",
     "title1_status": true,
     "ell_program": "English Language Learner services at all campuses",
-    "ell_contact_url": "https://www.pusd11.net/ell",
+    "ell_contact_url": "https://www.pusd11.net/",
     "ell_phone": "623-486-6000",
     "top_languages": ["Spanish", "Arabic", "Somali"],
     "tutoring_programs": ["Title I tutoring", "Peoria Public Library programs"],
-    "parent_rights_url": "https://www.pusd11.net/parentrights"
+    "parent_rights_url": "https://www.pusd11.net/"
   },
   {
     "district_id": "hillsborough-fl",
@@ -317,11 +317,11 @@
     "state": "FL",
     "title1_status": true,
     "ell_program": "English for Speakers of Other Languages (ESOL) districtwide",
-    "ell_contact_url": "https://www.hillsboroughschools.org/esol",
+    "ell_contact_url": "https://www.hillsboroughschools.org/",
     "ell_phone": "813-272-4000",
     "top_languages": ["Spanish", "Haitian Creole", "Arabic", "Portuguese"],
     "tutoring_programs": ["Title I tutoring", "Hillsborough County Public Library programs"],
-    "parent_rights_url": "https://www.hillsboroughschools.org/parentrights"
+    "parent_rights_url": "https://www.hillsboroughschools.org/"
   },
   {
     "district_id": "orange-county-fl",
@@ -329,11 +329,11 @@
     "state": "FL",
     "title1_status": true,
     "ell_program": "ESOL and bilingual education services districtwide",
-    "ell_contact_url": "https://www.ocps.net/esol",
+    "ell_contact_url": "https://www.ocps.net/",
     "ell_phone": "407-317-3200",
     "top_languages": ["Spanish", "Haitian Creole", "Portuguese", "Arabic"],
     "tutoring_programs": ["Title I tutoring", "Orange County Library programs"],
-    "parent_rights_url": "https://www.ocps.net/parentrights"
+    "parent_rights_url": "https://www.ocps.net/"
   },
   {
     "district_id": "palm-beach-fl",
@@ -341,11 +341,11 @@
     "state": "FL",
     "title1_status": true,
     "ell_program": "ESOL and bilingual support programs districtwide",
-    "ell_contact_url": "https://www.palmbeachschools.org/esol",
+    "ell_contact_url": "https://www.palmbeachschools.org/",
     "ell_phone": "561-434-8000",
     "top_languages": ["Spanish", "Haitian Creole", "Portuguese"],
     "tutoring_programs": ["Title I tutoring", "Palm Beach County Library programs"],
-    "parent_rights_url": "https://www.palmbeachschools.org/parentrights"
+    "parent_rights_url": "https://www.palmbeachschools.org/"
   },
   {
     "district_id": "duval-county-fl",
@@ -353,11 +353,11 @@
     "state": "FL",
     "title1_status": true,
     "ell_program": "ESOL services at all schools with multilingual support",
-    "ell_contact_url": "https://www.duvalschools.org/esol",
+    "ell_contact_url": "https://www.duvalschools.org/",
     "ell_phone": "904-390-2000",
     "top_languages": ["Spanish", "Haitian Creole", "Vietnamese", "Arabic"],
     "tutoring_programs": ["Title I tutoring", "Jacksonville Public Library programs"],
-    "parent_rights_url": "https://www.duvalschools.org/parentrights"
+    "parent_rights_url": "https://www.duvalschools.org/"
   },
   {
     "district_id": "pinellas-fl",
@@ -365,11 +365,11 @@
     "state": "FL",
     "title1_status": true,
     "ell_program": "ESOL and multilingual support programs districtwide",
-    "ell_contact_url": "https://www.pcsb.org/esol",
+    "ell_contact_url": "https://www.pcsb.org/",
     "ell_phone": "727-588-6000",
     "top_languages": ["Spanish", "Haitian Creole", "Vietnamese"],
     "tutoring_programs": ["Title I tutoring", "Pinellas Public Library programs"],
-    "parent_rights_url": "https://www.pcsb.org/parentrights"
+    "parent_rights_url": "https://www.pcsb.org/"
   },
   {
     "district_id": "dekalb-county-ga",
@@ -377,11 +377,11 @@
     "state": "GA",
     "title1_status": true,
     "ell_program": "ESOL and multilingual services across all schools",
-    "ell_contact_url": "https://www.dekalbschoolsga.org/esol",
+    "ell_contact_url": "https://www.dekalbschoolsga.org/",
     "ell_phone": "678-676-1200",
     "top_languages": ["Spanish", "Amharic", "Vietnamese", "Arabic"],
     "tutoring_programs": ["Title I tutoring", "DeKalb County Public Library programs"],
-    "parent_rights_url": "https://www.dekalbschoolsga.org/parentrights"
+    "parent_rights_url": "https://www.dekalbschoolsga.org/"
   },
   {
     "district_id": "cobb-county-ga",
@@ -389,11 +389,11 @@
     "state": "GA",
     "title1_status": true,
     "ell_program": "ESOL program with newcomer support centers",
-    "ell_contact_url": "https://www.cobbk12.org/esol",
+    "ell_contact_url": "https://www.cobbk12.org/",
     "ell_phone": "770-426-3300",
     "top_languages": ["Spanish", "Korean", "Hindi", "Arabic"],
     "tutoring_programs": ["Title I tutoring", "Cobb County Public Library programs"],
-    "parent_rights_url": "https://www.cobbk12.org/parentrights"
+    "parent_rights_url": "https://www.cobbk12.org/"
   },
   {
     "district_id": "atlanta-ps",
@@ -401,11 +401,11 @@
     "state": "GA",
     "title1_status": true,
     "ell_program": "ESOL and multilingual learner programs districtwide",
-    "ell_contact_url": "https://www.atlantapublicschools.us/esol",
+    "ell_contact_url": "https://www.atlantapublicschools.us/",
     "ell_phone": "404-802-3500",
     "top_languages": ["Spanish", "Amharic", "Arabic", "French"],
     "tutoring_programs": ["Title I tutoring", "Atlanta-Fulton Public Library programs"],
-    "parent_rights_url": "https://www.atlantapublicschools.us/parentrights"
+    "parent_rights_url": "https://www.atlantapublicschools.us/"
   },
   {
     "district_id": "hall-county-ga",
@@ -413,11 +413,11 @@
     "state": "GA",
     "title1_status": true,
     "ell_program": "ESOL and bilingual support programs for newcomer families",
-    "ell_contact_url": "https://www.hallco.org/boe/esol",
+    "ell_contact_url": "https://www.hallco.org/boe/",
     "ell_phone": "770-534-1080",
     "top_languages": ["Spanish", "Laotian", "Vietnamese"],
     "tutoring_programs": ["Title I tutoring", "Hall County Library programs"],
-    "parent_rights_url": "https://www.hallco.org/boe/parentrights"
+    "parent_rights_url": "https://www.hallco.org/boe/"
   },
   {
     "district_id": "charlotte-mecklenburg",
@@ -425,11 +425,11 @@
     "state": "NC",
     "title1_status": true,
     "ell_program": "English as a Second Language and bilingual services districtwide",
-    "ell_contact_url": "https://www.cmsk12.org/ell",
+    "ell_contact_url": "https://www.cmsk12.org/",
     "ell_phone": "980-343-3000",
     "top_languages": ["Spanish", "Vietnamese", "Arabic", "Burmese"],
     "tutoring_programs": ["Title I tutoring", "Charlotte Mecklenburg Library programs"],
-    "parent_rights_url": "https://www.cmsk12.org/parentrights"
+    "parent_rights_url": "https://www.cmsk12.org/"
   },
   {
     "district_id": "wake-county-nc",
@@ -437,11 +437,11 @@
     "state": "NC",
     "title1_status": true,
     "ell_program": "English as a Second Language program at all school levels",
-    "ell_contact_url": "https://www.wcpss.net/ell",
+    "ell_contact_url": "https://www.wcpss.net/",
     "ell_phone": "919-431-0000",
     "top_languages": ["Spanish", "Arabic", "Hindi", "Vietnamese"],
     "tutoring_programs": ["Title I tutoring", "Wake County Public Libraries programs"],
-    "parent_rights_url": "https://www.wcpss.net/parentrights"
+    "parent_rights_url": "https://www.wcpss.net/"
   },
   {
     "district_id": "fairfax-county-va",
@@ -449,11 +449,11 @@
     "state": "VA",
     "title1_status": true,
     "ell_program": "English for Speakers of Other Languages (ESOL) districtwide",
-    "ell_contact_url": "https://www.fcps.edu/multilingual",
+    "ell_contact_url": "https://www.fcps.edu/",
     "ell_phone": "571-423-1000",
     "top_languages": ["Spanish", "Korean", "Farsi", "Vietnamese", "Urdu"],
     "tutoring_programs": ["Title I tutoring", "Fairfax County Public Library programs"],
-    "parent_rights_url": "https://www.fcps.edu/parentrights"
+    "parent_rights_url": "https://www.fcps.edu/"
   },
   {
     "district_id": "arlington-county-va",
@@ -461,11 +461,11 @@
     "state": "VA",
     "title1_status": true,
     "ell_program": "ESOL and multilingual learner services at all schools",
-    "ell_contact_url": "https://www.apsva.us/esol",
+    "ell_contact_url": "https://www.apsva.us/",
     "ell_phone": "703-228-6000",
     "top_languages": ["Spanish", "Amharic", "Arabic", "Mongolian"],
     "tutoring_programs": ["Title I tutoring", "Arlington Public Library programs"],
-    "parent_rights_url": "https://www.apsva.us/parentrights"
+    "parent_rights_url": "https://www.apsva.us/"
   },
   {
     "district_id": "prince-william-va",
@@ -473,11 +473,11 @@
     "state": "VA",
     "title1_status": true,
     "ell_program": "English for Speakers of Other Languages districtwide",
-    "ell_contact_url": "https://www.pwcs.edu/esol",
+    "ell_contact_url": "https://www.pwcs.edu/",
     "ell_phone": "703-791-8000",
     "top_languages": ["Spanish", "Tagalog", "Hindi", "Arabic"],
     "tutoring_programs": ["Title I tutoring", "Prince William Public Library programs"],
-    "parent_rights_url": "https://www.pwcs.edu/parentrights"
+    "parent_rights_url": "https://www.pwcs.edu/"
   },
   {
     "district_id": "montgomery-county-md",
@@ -485,11 +485,11 @@
     "state": "MD",
     "title1_status": true,
     "ell_program": "English for Speakers of Other Languages (ESOL) districtwide",
-    "ell_contact_url": "https://www.montgomeryschoolsmd.org/esol",
+    "ell_contact_url": "https://www.montgomeryschoolsmd.org/",
     "ell_phone": "240-740-3000",
     "top_languages": ["Spanish", "Chinese", "Vietnamese", "French", "Amharic"],
     "tutoring_programs": ["Title I tutoring", "Montgomery County Public Libraries programs"],
-    "parent_rights_url": "https://www.montgomeryschoolsmd.org/parentrights"
+    "parent_rights_url": "https://www.montgomeryschoolsmd.org/"
   },
   {
     "district_id": "denver-ps",
@@ -497,11 +497,11 @@
     "state": "CO",
     "title1_status": true,
     "ell_program": "English Language Acquisition and Dual Language programs",
-    "ell_contact_url": "https://www.dpsk12.org/ell",
+    "ell_contact_url": "https://www.dpsk12.org/",
     "ell_phone": "720-423-3200",
     "top_languages": ["Spanish", "Arabic", "Somali", "Vietnamese"],
     "tutoring_programs": ["Title I tutoring", "Denver Public Library programs"],
-    "parent_rights_url": "https://www.dpsk12.org/parentrights"
+    "parent_rights_url": "https://www.dpsk12.org/"
   },
   {
     "district_id": "aurora-ps-co",
@@ -509,11 +509,11 @@
     "state": "CO",
     "title1_status": true,
     "ell_program": "English Language Development and newcomer support programs",
-    "ell_contact_url": "https://www.aurorak12.org/ell",
+    "ell_contact_url": "https://www.aurorak12.org/",
     "ell_phone": "303-344-8060",
     "top_languages": ["Spanish", "Somali", "Arabic", "Amharic", "Vietnamese"],
     "tutoring_programs": ["Title I tutoring", "Aurora Public Library programs"],
-    "parent_rights_url": "https://www.aurorak12.org/parentrights"
+    "parent_rights_url": "https://www.aurorak12.org/"
   },
   {
     "district_id": "seattle-ps",
@@ -521,11 +521,11 @@
     "state": "WA",
     "title1_status": true,
     "ell_program": "English Language Learner services and Dual Language programs",
-    "ell_contact_url": "https://www.seattleschools.org/ell",
+    "ell_contact_url": "https://www.seattleschools.org/",
     "ell_phone": "206-252-0000",
     "top_languages": ["Spanish", "Somali", "Vietnamese", "Amharic", "Chinese"],
     "tutoring_programs": ["Title I tutoring", "Seattle Public Library programs"],
-    "parent_rights_url": "https://www.seattleschools.org/parentrights"
+    "parent_rights_url": "https://www.seattleschools.org/"
   },
   {
     "district_id": "kent-sd-wa",
@@ -533,11 +533,11 @@
     "state": "WA",
     "title1_status": true,
     "ell_program": "English Language Learner and multilingual support programs",
-    "ell_contact_url": "https://www.kent.k12.wa.us/ell",
+    "ell_contact_url": "https://www.kent.k12.wa.us/",
     "ell_phone": "253-373-7000",
     "top_languages": ["Spanish", "Somali", "Vietnamese", "Tagalog"],
     "tutoring_programs": ["Title I tutoring", "King County Library System programs"],
-    "parent_rights_url": "https://www.kent.k12.wa.us/parentrights"
+    "parent_rights_url": "https://www.kent.k12.wa.us/"
   },
   {
     "district_id": "boston-ps",
@@ -545,11 +545,11 @@
     "state": "MA",
     "title1_status": true,
     "ell_program": "English Learner Education and Sheltered English Immersion programs",
-    "ell_contact_url": "https://www.bostonpublicschools.org/ell",
+    "ell_contact_url": "https://www.bostonpublicschools.org/bps-departments/multilingual-and-multicultural-education/about",
     "ell_phone": "617-635-9000",
     "top_languages": ["Spanish", "Haitian Creole", "Cape Verdean Creole", "Chinese", "Vietnamese"],
     "tutoring_programs": ["Title I tutoring", "Boston Public Library programs"],
-    "parent_rights_url": "https://www.bostonpublicschools.org/parentrights"
+    "parent_rights_url": "https://www.bostonpublicschools.org/"
   },
   {
     "district_id": "philadelphia-sd",
@@ -557,11 +557,11 @@
     "state": "PA",
     "title1_status": true,
     "ell_program": "English as a Second Language and bilingual programs districtwide",
-    "ell_contact_url": "https://www.philasd.org/esol",
+    "ell_contact_url": "https://www.philasd.org/",
     "ell_phone": "215-400-4000",
     "top_languages": ["Spanish", "Chinese", "Vietnamese", "Arabic"],
     "tutoring_programs": ["Title I tutoring", "Free Library of Philadelphia programs"],
-    "parent_rights_url": "https://www.philasd.org/parentrights"
+    "parent_rights_url": "https://www.philasd.org/"
   },
   {
     "district_id": "columbus-city",
@@ -569,11 +569,11 @@
     "state": "OH",
     "title1_status": true,
     "ell_program": "English Language Learner services districtwide",
-    "ell_contact_url": "https://www.ccsoh.us/ell",
+    "ell_contact_url": "https://www.ccsoh.us/",
     "ell_phone": "614-365-5000",
     "top_languages": ["Spanish", "Somali", "Arabic", "Nepali"],
     "tutoring_programs": ["Title I tutoring", "Columbus Metropolitan Library programs"],
-    "parent_rights_url": "https://www.ccsoh.us/parentrights"
+    "parent_rights_url": "https://www.ccsoh.us/"
   },
   {
     "district_id": "rockford-ps",
@@ -581,11 +581,11 @@
     "state": "IL",
     "title1_status": true,
     "ell_program": "English Language Learner and bilingual programs",
-    "ell_contact_url": "https://www.rps205.com/ell",
+    "ell_contact_url": "https://www.rps205.com/",
     "ell_phone": "815-966-3000",
     "top_languages": ["Spanish", "Burmese", "Somali", "Arabic"],
     "tutoring_programs": ["Title I tutoring", "Rockford Public Library programs"],
-    "parent_rights_url": "https://www.rps205.com/parentrights"
+    "parent_rights_url": "https://www.rps205.com/"
   },
   {
     "district_id": "shelby-county-tn",
@@ -593,10 +593,10 @@
     "state": "TN",
     "title1_status": true,
     "ell_program": "English as a Second Language and newcomer support programs",
-    "ell_contact_url": "https://www.scsk12.org/esol",
+    "ell_contact_url": "https://www.scsk12.org/",
     "ell_phone": "901-416-5300",
     "top_languages": ["Spanish", "Arabic", "Vietnamese", "Somali"],
     "tutoring_programs": ["Title I tutoring", "Memphis Public Libraries programs"],
-    "parent_rights_url": "https://www.scsk12.org/parentrights"
+    "parent_rights_url": "https://www.scsk12.org/"
   }
 ]

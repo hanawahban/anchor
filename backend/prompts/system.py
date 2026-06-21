@@ -59,7 +59,7 @@ When you have all 3 required answers AND the system provides AVAILABLE RIGHTS DA
     ],
     "advocacyScript": {
       "language": "the user's language code (en/es/ar/zh/fr/fil/vi)",
-      "text": "A complete ready-to-say script in the user's chosen language. Address the counselor, state the child's grade and home country, cite the specific law, and request the specific support. Never use bracket placeholders. Always refer to the child as 'my child' or 'my child\\'s' since the parent\\'s name is not collected. Write in full sentences, warm and respectful."
+      "text": "A complete ready-to-say script in the user's chosen language. Address the counselor, state the child's grade and home country, reference the general right by name if helpful, and request the specific support as an informed question rather than a legal demand. Never use bracket placeholders. Always refer to the child as 'my child' or 'my child's' since the parent's name is not collected. Write in full sentences, warm and respectful."
     }
   },
   "profileUpdate": {}

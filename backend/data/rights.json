@@ -6,7 +6,7 @@
     "plain_language": "Every child in the United States has the right to attend public school regardless of immigration status. Schools cannot ask for immigration documents, a Social Security number, or visa status as a condition of enrollment.",
     "what_schools_cannot_do": "Schools cannot deny enrollment, require a Social Security number, ask about citizenship or immigration status, or charge fees for enrollment.",
     "action": "If a school asks for immigration documents or denies your child enrollment, contact your district ELL office immediately and reference Plyler v. Doe (1982).",
-    "source_url": "https://www.aclu.org/know-your-rights/the-rights-of-immigrants-in-the-us"
+    "source_url": "https://www.oyez.org/cases/1981/80-1538"
   },
   {
     "right_id": "lau",
@@ -15,16 +15,16 @@
     "plain_language": "Students who are not fluent in English have the right to language instruction. Schools must provide ESL classes, bilingual programs, or other language support. Students cannot be placed in classes where they cannot understand the instruction.",
     "what_schools_cannot_do": "Schools cannot place a student in a regular English classroom with no language support and call that sufficient. They must have an active plan for English language development.",
     "action": "Request an ELL assessment within the first 30 days of enrollment. Ask the school what specific language support program your child will be placed in.",
-    "source_url": "https://www.ed.gov/laws-and-policy/civil-rights-laws/english-learner-el-resources-and-guidance"
+    "source_url": "https://www.oyez.org/cases/1973/72-6520"
   },
   {
     "right_id": "native-language-assessment",
-    "law": "IDEA (Individuals with Disabilities Education Act) / Title III",
+    "law": "IDEA § 300.304 / Title VI Civil Rights Act",
     "title": "Right to Be Assessed in Your Native Language",
     "plain_language": "Your child's academic ability must be evaluated separately from their English proficiency. Math, science, and other subject knowledge must be tested in the child's home language — not just in English. A child should never be placed below their academic level simply because of a language barrier.",
     "what_schools_cannot_do": "Schools cannot use an English-only test to determine a child's academic grade placement if the child is not yet fluent in English.",
     "action": "Request in writing that all placement assessments be administered in your child's home language. If your child was placed below their level, you have the right to request a re-assessment.",
-    "source_url": "https://sites.ed.gov/idea/"
+    "source_url": "https://sites.ed.gov/idea/regs/b/d/300.304/c/1/ii"
   },
   {
     "right_id": "title6",
@@ -33,7 +33,7 @@
     "plain_language": "Schools must provide important communications to parents in a language they can understand. This includes report cards, meeting notices, disciplinary letters, IEP documents, and enrollment forms. You have the right to request an interpreter for any school meeting.",
     "what_schools_cannot_do": "Schools cannot send only English-language documents to parents who do not speak English, or refuse to provide an interpreter at parent-teacher conferences and IEP meetings.",
     "action": "Request all school communications in your language in writing. Ask for an interpreter for any meeting. Schools are legally required to provide this at no cost to you.",
-    "source_url": "https://www.ed.gov/laws-and-policy/civil-rights-laws/english-learner-el-resources-and-guidance"
+    "source_url": "https://www.ed.gov/laws-and-policy/civil-rights-laws/race-color-and-national-origin-discrimination/race-color-and-national-origin-discrimination-key-issues/equal-education-opportunities-english"
   },
   {
     "right_id": "mckinney-vento",
@@ -42,7 +42,7 @@
     "plain_language": "Children experiencing housing instability — including those staying in shelters, motels, or temporarily with other families — have the right to enroll in school immediately, even without the documents schools normally require like proof of address, immunization records, or prior school records.",
     "what_schools_cannot_do": "Schools cannot delay or deny enrollment while waiting for documents from a child experiencing housing instability.",
     "action": "If you do not have a permanent address or required documents, tell the school enrollment office and ask about McKinney-Vento protections. The school must connect you with a homeless liaison.",
-    "source_url": "https://nche.ed.gov/mckinney-vento/"
+    "source_url": "https://nche.ed.gov/legislation/mckinney-vento"
   },
   {
     "right_id": "idea-iep",
@@ -51,7 +51,7 @@
     "plain_language": "If your child may have a learning disability or developmental need, they have the right to a free evaluation. Language barriers must not be confused with learning disabilities. Any evaluation must be conducted in the child's native language.",
     "what_schools_cannot_do": "Schools cannot label a child as having a learning disability based on English language tests alone. They cannot charge for evaluations or deny a parent's written request for an evaluation.",
     "action": "Submit a written request to your school asking for a special education evaluation. The school must respond within 60 days. Request that all testing be done in your child's home language.",
-    "source_url": "https://sites.ed.gov/idea/"
+    "source_url": "https://sites.ed.gov/idea/regs/b/d/300.300"
   },
   {
     "right_id": "ferpa",
@@ -69,7 +69,7 @@
     "plain_language": "If your child has a physical or mental condition that affects their learning, they have the right to a free accommodation plan (called a 504 Plan) that helps them access education on equal terms. This includes accommodations like extra time on tests, a quiet testing room, or assistive technology.",
     "what_schools_cannot_do": "Schools cannot ignore a parent's written request for a 504 evaluation, charge for accommodations, or deny accommodations without following a formal review process.",
     "action": "Write a letter to the school principal requesting a 504 evaluation. Describe how your child's condition affects their learning. The school must evaluate and respond.",
-    "source_url": "https://www2.ed.gov/about/offices/list/ocr/504faq.html"
+    "source_url": "https://www.ed.gov/laws-and-policy/individuals-disabilities/section-504/civil-rights-of-students-hidden-disabilities-and-section-504"
   },
   {
     "right_id": "title1-tutoring",
@@ -78,7 +78,7 @@
     "plain_language": "Students at Title I-designated schools who are falling behind have the right to free additional academic support. This can include before- or after-school tutoring, summer programs, and extended learning time — all at no cost to the family.",
     "what_schools_cannot_do": "Schools cannot charge Title I-eligible students for supplemental tutoring services funded by Title I grants. They must notify families in writing about available support services.",
     "action": "Ask your child's school whether it is a Title I school. If it is, request a meeting to discuss what free tutoring and after-school programs are available for your child.",
-    "source_url": "https://www.ed.gov/laws-and-policy/elementary-and-secondary-education/title-i-improving-basic-programs-operated-by-state-and-local-educational-agencies"
+    "source_url": "https://www.ed.gov/grants-and-programs/formula-grants/school-improvement-grants/title-i-part-improving-basic-programs-operated-local-educational-agencies#eligibility"
   },
   {
     "right_id": "immigrant-act",
@@ -87,6 +87,6 @@
     "plain_language": "Children who have attended school in the U.S. for less than 3 years and were born outside the country may qualify for additional support under the Immigrant Children and Youth Program. This includes tutoring, mentoring, family literacy activities, and after-school programs specifically designed for newcomer students.",
     "what_schools_cannot_do": "Schools in districts that receive Immigrant Children and Youth funds cannot restrict these services to certain nationalities. Any qualifying recently arrived immigrant student is eligible regardless of their home country.",
     "action": "Ask your child's school or district office whether they receive Title III Immigrant Children and Youth funds. If so, ask what newcomer student programs your child qualifies for.",
-    "source_url": "https://www.ed.gov/laws-and-policy/elementary-and-secondary-education/title-iii-language-instruction-for-english-learners-and-immigrant-students"
+    "source_url": "https://www.ed.gov/grants-and-programs/formula-grants/formula-grants-special-populations/english-language-acquisition-state-grants-title-iii-part"
   }
 ]

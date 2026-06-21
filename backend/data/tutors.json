@@ -78,5 +78,55 @@
     "format": "self-paced online textbooks and practice",
     "grades": "6-12",
     "best_for": "STEM subjects, especially for students who were ahead in math/science in their home country"
+  },
+  {
+    "platform": "Zearn Math",
+    "url": "https://www.zearn.org",
+    "subjects": ["math"],
+    "languages": ["English", "Spanish"],
+    "free": true,
+    "format": "self-paced visual math lessons with built-in support",
+    "grades": "K-8",
+    "best_for": "Elementary and middle school math — strong visual approach ideal for students still developing English"
+  },
+  {
+    "platform": "CommonLit",
+    "url": "https://www.commonlit.org",
+    "subjects": ["reading", "english", "writing"],
+    "languages": ["English", "Spanish"],
+    "free": true,
+    "format": "self-paced digital reading platform with guided questions",
+    "grades": "3-12",
+    "best_for": "Building academic reading and writing skills in English"
+  },
+  {
+    "platform": "ReadWorks",
+    "url": "https://www.readworks.org",
+    "subjects": ["reading", "english"],
+    "languages": ["English", "Spanish"],
+    "free": true,
+    "format": "self-paced nonfiction reading passages at adjustable levels",
+    "grades": "K-12",
+    "best_for": "Improving reading comprehension and academic English vocabulary"
+  },
+  {
+    "platform": "Prodigy Math",
+    "url": "https://www.prodigygame.com",
+    "subjects": ["math"],
+    "languages": ["English", "French", "Spanish"],
+    "free": true,
+    "format": "game-based adaptive math practice",
+    "grades": "1-8",
+    "best_for": "Young students who need engaging math practice — game format removes language barrier"
+  },
+  {
+    "platform": "IXL Learning",
+    "url": "https://www.ixl.com",
+    "subjects": ["math", "science", "english", "reading"],
+    "languages": ["English", "Spanish"],
+    "free": true,
+    "format": "adaptive practice with immediate feedback (free limited daily practice)",
+    "grades": "K-12",
+    "best_for": "Students who need targeted skill practice with immediate feedback"
   }
 ]

@@ -52,5 +52,41 @@
     "what_schools_cannot_do": "Schools cannot label a child as having a learning disability based on English language tests alone. They cannot charge for evaluations or deny a parent's written request for an evaluation.",
     "action": "Submit a written request to your school asking for a special education evaluation. The school must respond within 60 days. Request that all testing be done in your child's home language.",
     "source_url": "https://sites.ed.gov/idea/"
+  },
+  {
+    "right_id": "ferpa",
+    "law": "Family Educational Rights and Privacy Act (FERPA, 1974)",
+    "title": "Right to Access Your Child's School Records",
+    "plain_language": "Parents have the legal right to review all educational records the school keeps about their child — including grades, test scores, placement decisions, and disciplinary records. The school must provide access within 45 days of a written request. You can also request corrections to records you believe are inaccurate.",
+    "what_schools_cannot_do": "Schools cannot share your child's educational records with outside parties without your written consent. They cannot deny your request to review records or charge a fee that prevents you from accessing them.",
+    "action": "Submit a written request to the school principal asking to review your child's educational records. The school must respond within 45 days.",
+    "source_url": "https://studentprivacy.ed.gov/ferpa"
+  },
+  {
+    "right_id": "section504",
+    "law": "Section 504 of the Rehabilitation Act (1973)",
+    "title": "Right to Disability Accommodations at No Cost",
+    "plain_language": "If your child has a physical or mental condition that affects their learning, they have the right to a free accommodation plan (called a 504 Plan) that helps them access education on equal terms. This includes accommodations like extra time on tests, a quiet testing room, or assistive technology.",
+    "what_schools_cannot_do": "Schools cannot ignore a parent's written request for a 504 evaluation, charge for accommodations, or deny accommodations without following a formal review process.",
+    "action": "Write a letter to the school principal requesting a 504 evaluation. Describe how your child's condition affects their learning. The school must evaluate and respond.",
+    "source_url": "https://www2.ed.gov/about/offices/list/ocr/504faq.html"
+  },
+  {
+    "right_id": "title1-tutoring",
+    "law": "Every Student Succeeds Act / Title I (2015)",
+    "title": "Right to Free Supplemental Tutoring at Title I Schools",
+    "plain_language": "Students at Title I-designated schools who are falling behind have the right to free additional academic support. This can include before- or after-school tutoring, summer programs, and extended learning time — all at no cost to the family.",
+    "what_schools_cannot_do": "Schools cannot charge Title I-eligible students for supplemental tutoring services funded by Title I grants. They must notify families in writing about available support services.",
+    "action": "Ask your child's school whether it is a Title I school. If it is, request a meeting to discuss what free tutoring and after-school programs are available for your child.",
+    "source_url": "https://www.ed.gov/laws-and-policy/elementary-and-secondary-education/title-i-improving-basic-programs-operated-by-state-and-local-educational-agencies"
+  },
+  {
+    "right_id": "immigrant-act",
+    "law": "Title III of ESEA / Immigrant Children and Youth (Reauthorized 2015)",
+    "title": "Right to Supplemental Services as a Recently Arrived Immigrant",
+    "plain_language": "Children who have attended school in the U.S. for less than 3 years and were born outside the country may qualify for additional support under the Immigrant Children and Youth Program. This includes tutoring, mentoring, family literacy activities, and after-school programs specifically designed for newcomer students.",
+    "what_schools_cannot_do": "Schools in districts that receive Immigrant Children and Youth funds cannot restrict these services to certain nationalities. Any qualifying recently arrived immigrant student is eligible regardless of their home country.",
+    "action": "Ask your child's school or district office whether they receive Title III Immigrant Children and Youth funds. If so, ask what newcomer student programs your child qualifies for.",
+    "source_url": "https://www.ed.gov/laws-and-policy/elementary-and-secondary-education/title-iii-language-instruction-for-english-learners-and-immigrant-students"
   }
 ]
